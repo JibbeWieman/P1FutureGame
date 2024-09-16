@@ -10,6 +10,7 @@ public class NS_Template : ScriptableObject
     [SerializeField] public int entertainment;
     [SerializeField] public int awareness;
 
+
     // Start is called before the first frame update
     void Start()
     {
