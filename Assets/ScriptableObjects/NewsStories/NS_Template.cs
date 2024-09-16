@@ -6,8 +6,9 @@ using UnityEngine;
 public class NS_Template : ScriptableObject
 {
 
-    [SerializeField] private int money;
-    [SerializeField] private int climateChange;
+    [SerializeField] public int money;
+    [SerializeField] public int entertainment;
+    [SerializeField] public int awareness;
 
     // Start is called before the first frame update
     void Start()
