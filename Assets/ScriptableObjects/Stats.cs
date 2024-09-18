@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
@@ -9,39 +10,32 @@ public class Stats : MonoBehaviour
     public TextMeshProUGUI moneyStatText;
     public TextMeshProUGUI viewerStatText;
     public TextMeshProUGUI awarenessStatText;
+
+    public Image moneyStatBar;
+    public Image viewerStatBar;
+    public Image awarenessStatBar;
+
     [Space(5)]
     [Header("Statistics")]
     [SerializeField] private int moneyStat;
     [SerializeField] private int viewerStat;
     [SerializeField] private int awarenessStat;
+
+    [Space(5)]
+    [Header("Max Values")]
+    [SerializeField] private int maxMoneyStat = 100;
+    [SerializeField] private int maxViewerStat = 100;
+    [SerializeField] private int maxAwarenessStat = 100;
     #endregion
 
     public void UpdateStats(ScriptableObject script)
     {
-        // Cast the ScriptableObject to NS_Template to access its fields
-        NS_Template nsTemplate = script as NS_Template;
-
-        if (nsTemplate != null)
+        if (script is NS_Template nsTemplate)
         {
-            // Access the variables from the scriptable object
-            int money = nsTemplate.money;
-            int entertainment = nsTemplate.entertainment;
-            int awareness = nsTemplate.awareness;
-
-            // Increment stats based on scriptable object
-            int newMoneyStat = moneyStat + money;
-            int newAwarenessStat = awarenessStat + awareness;
-            int newViewerStat = viewerStat + entertainment;
-
-            // Start coroutines to gradually update the stat texts
-            StartCoroutine(UpdateStatText(moneyStatText, moneyStat, newMoneyStat));
-            StartCoroutine(UpdateStatText(awarenessStatText, awarenessStat, newAwarenessStat));
-            StartCoroutine(UpdateStatText(viewerStatText, viewerStat, newViewerStat));
-
-            // Update internal stats
-            moneyStat = newMoneyStat;
-            awarenessStat = newAwarenessStat;
-            viewerStat = newViewerStat;
+            // Update stat values
+            UpdateStat(ref moneyStat, nsTemplate.money, maxMoneyStat, moneyStatText, moneyStatBar);
+            UpdateStat(ref awarenessStat, nsTemplate.awareness, maxAwarenessStat, awarenessStatText, awarenessStatBar);
+            UpdateStat(ref viewerStat, nsTemplate.entertainment, maxViewerStat, viewerStatText, viewerStatBar);
         }
         else
         {
@@ -49,28 +43,46 @@ public class Stats : MonoBehaviour
         }
     }
 
-    // Coroutine to update the stat text gradually
-    private IEnumerator UpdateStatText(TextMeshProUGUI statText, int startValue, int endValue)
+    private void UpdateStat(ref int statValue, int changeAmount, int maxValue, TextMeshProUGUI statText, Image statBar)
     {
-        float duration = Mathf.Max(0.5f, Mathf.Log10(Mathf.Abs(endValue - startValue) + 1)); // Adjust speed based on the difference
+        int newStatValue = statValue + changeAmount;
+
+        // Ensure the new stat value is within bounds
+        newStatValue = Mathf.Clamp(newStatValue, 0, maxValue);
+
+        // Start the coroutine to handle both text and bar updates
+        StartCoroutine(UpdateStatDisplay(statText, statBar, statValue, newStatValue, maxValue));
+
+        // Update the internal stat value
+        statValue = newStatValue;
+    }
+
+    private IEnumerator UpdateStatDisplay(TextMeshProUGUI statText, Image statBar, int startValue, int endValue, int maxValue)
+    {
+        float duration = Mathf.Max(0.5f, Mathf.Log10(Mathf.Abs(endValue - startValue) + 1)); // Adjust speed based on difference
         float elapsedTime = 0f;
+
+        float startFillAmount = (float)startValue / maxValue;
+        float endFillAmount = (float)endValue / maxValue;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float percentageComplete = elapsedTime / duration;
 
-            // Lerp between the startValue and endValue
+            // Interpolate both text and bar value based on percentageComplete
             int currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, endValue, percentageComplete));
+            float currentFillAmount = Mathf.Lerp(startFillAmount, endFillAmount, percentageComplete);
 
-            // Update the text with the current value
+            // Update text and bar
             statText.text = currentValue.ToString();
+            statBar.fillAmount = currentFillAmount;
 
-            // Wait for the next frame
             yield return null;
         }
 
-        // Ensure the final value is set
+        // Ensure final values are set
         statText.text = endValue.ToString();
+        statBar.fillAmount = endFillAmount;
     }
 }
