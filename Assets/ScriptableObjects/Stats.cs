@@ -45,6 +45,7 @@ public class Stats : MonoBehaviour
 
     private void UpdateStat(ref int statValue, int changeAmount, int maxValue, TextMeshProUGUI statText, Image statBar)
     {
+        Debug.Log("Updating Stats");
         int newStatValue = statValue + changeAmount;
 
         // Ensure the new stat value is within bounds
