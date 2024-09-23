@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 8894191465457295462}
   - component: {fileID: 8492423618906550265}
   - component: {fileID: 2533706099193322589}
+  - component: {fileID: 2265172921703006434}
   m_Layer: 0
   m_Name: NewsStory
   m_TagString: Untagged
@@ -396,6 +397,19 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+--- !u!114 &2265172921703006434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271452722094587741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: 83f37fff84a0b394ba69ddecc2361d29, type: 2}
 --- !u!1 &4964608861527828792
 GameObject:
   m_ObjectHideFlags: 0
