@@ -13,9 +13,12 @@ public class NewsStoryDetector : MonoBehaviour
         var newsStory = other.GetComponent<NewsStoryClass>();
         if (newsStory != null )
         {
-
-            newsStory.SendStats();
-            _buttonPressed = false;
+            if(_buttonPressed == true)
+            {
+                newsStory.SendStats();
+                _buttonPressed = false;
+            }
+           
         }
     }
 
