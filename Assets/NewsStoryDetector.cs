@@ -7,23 +7,21 @@ using UnityEngine.Events;
 public class NewsStoryDetector : MonoBehaviour
 {
     [SerializeField] private UnityEvent _newsStoryConfirm;
-    private bool _buttonPressed = false;
+    private bool _storyAvaliable = false;
+    private Component newsStoryComponent;
     private void OnTriggerEnter(Collider other)
     {
-        var newsStory = other.GetComponent<NewsStoryClass>();
-        if (newsStory != null )
-        {
-            if(_buttonPressed == true)
-            {
-                newsStory.SendStats();
-                _buttonPressed = false;
-            }
-           
-        }
+        newsStoryComponent = other;
+        _storyAvaliable = true;
     }
 
     public void ConfirmButtonPressed()
     {
-        _buttonPressed = true;
+        if (_storyAvaliable)
+        {
+            var newsStory = newsStoryComponent.GetComponent<NewsStoryClass>();
+            newsStory.SendStats();
+            _storyAvaliable = false;
+        }
     }
 }
