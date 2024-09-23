@@ -13,8 +13,14 @@ public class NewsStoryDetector : MonoBehaviour
         var newsStory = other.GetComponent<NewsStoryClass>();
         if (newsStory != null )
         {
+
             newsStory.SendStats();
             Destroy(other.gameObject, 2);
         }
+    }
+
+    public void ConfirmButtonPressed()
+    {
+        Debug.Log("ButtonPressed");
     }
 }
