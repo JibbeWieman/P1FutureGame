@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class NewsStoryDetector : MonoBehaviour
 {
     [SerializeField] private UnityEvent _newsStoryConfirm;
-
+    private bool _buttonPressed = false;
     private void OnTriggerEnter(Collider other)
     {
         var newsStory = other.GetComponent<NewsStoryClass>();
@@ -15,11 +15,12 @@ public class NewsStoryDetector : MonoBehaviour
         {
 
             newsStory.SendStats();
+            _buttonPressed = false;
         }
     }
 
     public void ConfirmButtonPressed()
     {
-        Debug.Log("ButtonPressed");
+        _buttonPressed = true;
     }
 }
