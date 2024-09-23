@@ -14,7 +14,6 @@ public class NewsStoryDetector : MonoBehaviour
         if (newsStory != null )
         {
             newsStory.SendStats();
-            Destroy(other.gameObject, 2);
         }
     }
 }
