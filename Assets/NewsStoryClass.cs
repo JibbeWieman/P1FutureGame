@@ -4,9 +4,14 @@ using UnityEngine.Events;
 public class NewsStoryClass : MonoBehaviour
 { 
     [SerializeField] private UnityEvent _updateStats;
-    
+    private bool _used;
+
     public void SendStats()
     {
-        _updateStats.Invoke();
+        if (!_used)
+        {
+            _updateStats.Invoke();
+            _used = true;
+        }
     }
 }
