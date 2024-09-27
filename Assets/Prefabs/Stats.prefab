@@ -309,12 +309,14 @@ MonoBehaviour:
   moneyStatBar: {fileID: 9215014086305771206}
   viewerStatBar: {fileID: 2002831542675161952}
   awarenessStatBar: {fileID: 4082899513068856559}
-  moneyStat: 0
-  viewerStat: 0
-  awarenessStat: 0
+  moneyStat: 1
+  viewerStat: 100
+  awarenessStat: 1
   maxMoneyStat: 100
   maxViewerStat: 100
   maxAwarenessStat: 100
+  decreaseInterval: 2
+  decreaseAmount: 1
 --- !u!1 &6056140775844676997
 GameObject:
   m_ObjectHideFlags: 0

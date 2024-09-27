@@ -7,21 +7,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Scene Type", menuName = "ScriptableObjects/SceneType", order = 1)]
 public class SceneTypeObject : ScriptableObject
 {
-    private List<GameObject> objects;
+    readonly private List<GameObject> objects;
     
-    public event Action onAdded;
-    public event Action onRemoved;
+    public event Action OnAdded;
+    public event Action OnRemoved;
     
     public void Add(GameObject obj)
     {
         objects.Add(obj);
-        onAdded?.Invoke();
+        OnAdded?.Invoke();
     }
 
     public void Remove(GameObject obj)
     {
         objects.Remove(obj);
-        onRemoved?.Invoke();
+        OnRemoved?.Invoke();
     }
 
     public ReadOnlyCollection<GameObject> Objects => objects.AsReadOnly();

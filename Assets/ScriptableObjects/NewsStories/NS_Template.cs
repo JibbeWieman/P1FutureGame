@@ -7,4 +7,6 @@ public class NS_Template : ScriptableObject
     public int money;
     public int entertainment;
     public int awareness;
+
+    public bool isTrending;
 }

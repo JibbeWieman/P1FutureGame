@@ -23,18 +23,17 @@ public class StatsManager : MonoBehaviour
 
     [Space(5)]
     [Header("Max Values")]
-    [SerializeField] private int maxMoneyStat = 100;
-    [SerializeField] private int maxViewerStat = 100;
-    [SerializeField] private int maxAwarenessStat = 100;
+    [SerializeField] private int maxMoneyStat = 200;
+    [SerializeField] private int maxViewerStat = 200;
+    [SerializeField] private int maxAwarenessStat = 200;
 
     readonly private int minMoneyStat = -100; // Allow stats to go negative to this value
-    readonly private int minViewerStat = -100;
+    readonly private int minViewerStat = 0;
     readonly private int minAwarenessStat = -100;
 
     [Space(5)]
     [Header("Decrease Rate")]
-    [SerializeField] private float decreaseInterval = 2.5f; // time in seconds for each stat decrease
-    [SerializeField] private int decreaseAmount = 1; // Amount of decrease per tick
+    [SerializeField] private float viewerChangeInterval = 2.5f; // time in seconds for each stat decrease
     #endregion
 
     private void Start()
@@ -47,10 +46,14 @@ public class StatsManager : MonoBehaviour
     {
         if (script is NS_Template nsTemplate)
         {
+            int money = nsTemplate.isTrending ? nsTemplate.money : nsTemplate.money / 2;
+            int awareness = nsTemplate.isTrending ? nsTemplate.awareness : nsTemplate.awareness / 2;
+            int entertainment = nsTemplate.isTrending ? nsTemplate.entertainment : nsTemplate.entertainment / 2;
+
             // Update stat values
-            UpdateStat(ref moneyStat, nsTemplate.money, minMoneyStat, maxMoneyStat, moneyStatText, moneyStatBar);
-            UpdateStat(ref awarenessStat, nsTemplate.awareness, minAwarenessStat, maxAwarenessStat, awarenessStatText, awarenessStatBar);
-            UpdateStat(ref viewerStat, nsTemplate.entertainment, minViewerStat, maxViewerStat, viewerStatText, viewerStatBar);
+            UpdateStat(ref moneyStat, money, minMoneyStat, maxMoneyStat, moneyStatText, moneyStatBar, "Money");
+            UpdateStat(ref awarenessStat, awareness, minAwarenessStat, maxAwarenessStat, awarenessStatText, awarenessStatBar, "Awareness");
+            UpdateStat(ref viewerStat, entertainment, minViewerStat, maxViewerStat, viewerStatText, viewerStatBar, "Viewers");
         }
         else
         {
@@ -58,7 +61,7 @@ public class StatsManager : MonoBehaviour
         }
     }
 
-    private void UpdateStat(ref int statValue, int changeAmount, int minValue, int maxValue, TextMeshProUGUI statText, Image statBar)
+    private void UpdateStat(ref int statValue, int changeAmount, int minValue, int maxValue, TextMeshProUGUI statText, Image statBar, string statType)
     {
         int newStatValue = statValue + changeAmount;
 
@@ -66,13 +69,13 @@ public class StatsManager : MonoBehaviour
         newStatValue = Mathf.Clamp(newStatValue, minValue, maxValue);
 
         // Start the coroutine to handle both text and bar updates
-        StartCoroutine(UpdateStatDisplay(statText, statBar, statValue, newStatValue, maxValue));
+        StartCoroutine(UpdateStatDisplay(statText, statBar, statValue, newStatValue, maxValue, statType));
 
         // Update the internal stat value
         statValue = newStatValue;
     }
 
-    private IEnumerator UpdateStatDisplay(TextMeshProUGUI statText, Image statBar, int startValue, int endValue, int maxValue)
+    private IEnumerator UpdateStatDisplay(TextMeshProUGUI statText, Image statBar, int startValue, int endValue, int maxValue, string statType)
     {
         float duration = Mathf.Max(0.5f, Mathf.Log10(Mathf.Abs(endValue - startValue) + 1)); // Adjust speed based on difference
         float elapsedTime = 0f;
@@ -88,16 +91,16 @@ public class StatsManager : MonoBehaviour
             // Interpolate both text and bar value based on percentageComplete
             int currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, endValue, percentageComplete));
             float currentFillAmount = Mathf.Lerp(startFillAmount, endFillAmount, percentageComplete);
-
+            
             // Update text and bar
-            statText.text = currentValue.ToString();
+            statText.text = $"{statType}: {currentValue}";
             statBar.fillAmount = currentFillAmount;
 
             yield return null;
         }
 
         // Ensure final values are set
-        statText.text = endValue.ToString();
+        statText.text = $"{statType}: {endValue}";
         statBar.fillAmount = endFillAmount;
     }
 
@@ -106,9 +109,10 @@ public class StatsManager : MonoBehaviour
         // This coroutine will run indefinitely
         while (true)
         {
-            yield return new WaitForSeconds(decreaseInterval); // Wait for the specified interval
+            yield return new WaitForSeconds(viewerChangeInterval); // Wait for the specified interval
 
-            UpdateStat(ref viewerStat, -decreaseAmount, minViewerStat, maxViewerStat, viewerStatText, viewerStatBar);
+            int viewerChangeAmount = Random.Range(-3, 2); // Amount of change per tick
+            UpdateStat(ref viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, viewerStatText, viewerStatBar, "Viewers");
         }
     }
 }
