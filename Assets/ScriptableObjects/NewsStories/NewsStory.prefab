@@ -595,13 +595,13 @@ MonoBehaviour:
   _updateStats:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7660901166042944612, guid: 708224daef301cb4cb91b87b49e0d66a, type: 3}
-        m_TargetAssemblyTypeName: Stats, Assembly-CSharp
-        m_MethodName: UpdateStats
+      - m_Target: {fileID: 6938273954808566340, guid: 436c3ab74532878469c88a8e58b3f41e, type: 3}
+        m_TargetAssemblyTypeName: NewsStoryManager, Assembly-CSharp
+        m_MethodName: AssignNewsStory
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f7147ba658f3e7e4495c2f973c6f5426, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.ScriptableObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: NS_Template, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

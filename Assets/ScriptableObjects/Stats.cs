@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Stats : MonoBehaviour
+public class Stats : NewsStoryManager
 {
     #region VARIABLES
     [Header("References")]
@@ -28,24 +28,21 @@ public class Stats : MonoBehaviour
     [SerializeField] private int maxAwarenessStat = 100;
     #endregion
 
-    public void UpdateStats(ScriptableObject script)
+    protected override void OnNewsstoryReceived()
     {
-        if (script is NS_Template nsTemplate)
-        {
-            // Update stat values
-            UpdateStat(ref moneyStat, nsTemplate.money, maxMoneyStat, moneyStatText, moneyStatBar);
-            UpdateStat(ref awarenessStat, nsTemplate.awareness, maxAwarenessStat, awarenessStatText, awarenessStatBar);
-            UpdateStat(ref viewerStat, nsTemplate.entertainment, maxViewerStat, viewerStatText, viewerStatBar);
-        }
-        else
-        {
-            Debug.LogWarning("The provided ScriptableObject is not of type NS_Template.");
-        }
-    }
+        base.OnNewsstoryReceived();
+        Debug.Log("Running Stats Script");
+        int money = GetContent(news => news.money);
+        int entertainment = GetContent(news => news.entertainment);
+        int awareness = GetContent(news => news.awareness);
+        Debug.Log($"Money: {money}, Entertainment: {entertainment}, Awareness: {awareness}");
+        UpdateStat(ref moneyStat, money, maxMoneyStat, moneyStatText, moneyStatBar);
+        UpdateStat(ref awarenessStat, awareness, maxAwarenessStat, awarenessStatText, awarenessStatBar);
+        UpdateStat(ref viewerStat, entertainment, maxViewerStat, viewerStatText, viewerStatBar);
 
+    }
     private void UpdateStat(ref int statValue, int changeAmount, int maxValue, TextMeshProUGUI statText, Image statBar)
     {
-        Debug.Log("Updating Stats");
         int newStatValue = statValue + changeAmount;
 
         // Ensure the new stat value is within bounds
