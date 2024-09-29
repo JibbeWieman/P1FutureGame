@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsManager : MonoBehaviour
+public class StatsManager : NewsStoryManager
 {
     #region VARIABLES
     [Header("References")]
@@ -35,6 +35,18 @@ public class StatsManager : MonoBehaviour
     [Header("Decrease Rate")]
     [SerializeField] private float viewerChangeInterval = 2.5f; // time in seconds for each stat decrease
     #endregion
+
+    protected override void OnNewsstoryReceived()
+    {
+        base.OnNewsstoryReceived();
+        Debug.Log("Running Stats Script");
+        int money = GetContent(news => news.money);
+        int entertainment = GetContent(news => news.entertainment);
+        int awareness = GetContent(news => news.awareness);
+        Debug.Log($"Money: {money}, Entertainment: {entertainment}, Awareness: {awareness}");
+
+        UpdateStats(news);
+    }
 
     private void Start()
     {
@@ -98,7 +110,7 @@ public class StatsManager : MonoBehaviour
 
             yield return null;
         }
-
+        
         // Ensure final values are set
         statText.text = $"{statType}: {endValue}";
         statBar.fillAmount = endFillAmount;

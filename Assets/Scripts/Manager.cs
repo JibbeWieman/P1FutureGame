@@ -9,7 +9,7 @@ public abstract class Manager
 
     public virtual void Update()
     {
-
+        
     }
 
     public abstract void Pause();

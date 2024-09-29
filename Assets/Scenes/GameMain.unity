@@ -6388,14 +6388,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
-      propertyPath: maxMoneyStat
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
-      propertyPath: maxViewerStat
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20760,7 +20752,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1659428254}
-  m_VersionIndex: 26
+  m_VersionIndex: 30
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21188,6 +21180,10 @@ PrefabInstance:
       propertyPath: _updateStats.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StatsManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1346375522907433711, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: _updateStats.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: f7147ba658f3e7e4495c2f973c6f5426, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: NewsStory
