@@ -592,18 +592,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2539993d1e2e244b79651851bc2e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateStats:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
-        m_TargetAssemblyTypeName: StatsManager, Assembly-CSharp
-        m_MethodName: UpdateStats
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 70f7609370d97d34685d56352734f662, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.ScriptableObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
+  template: {fileID: 11400000, guid: 70f7609370d97d34685d56352734f662, type: 2}

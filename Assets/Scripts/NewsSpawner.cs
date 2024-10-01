@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 public class NewsSpawner : MonoBehaviour
 {
-    [SerializeField, Tooltip("Object pool the spawned objects get added to")] private SceneTypeObject NewsStory;
-    [SerializeField] private StatsManager statsManager;
-    [SerializeField, Tooltip("Time between spawns")] private float spawnInterval = 1f;
+    [SerializeField, Tooltip("Object pool the spawned objects get added to")] 
+    private SceneTypeObject NewsStory;
+
+    [SerializeField] 
+    private StatsManager statsManager;
+
+    [SerializeField, Tooltip("Time between spawns")] 
+    private float spawnInterval = 1f;
     
     public int maxStoryAmount = 100; 
 
