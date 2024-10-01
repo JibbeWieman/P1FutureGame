@@ -14,8 +14,8 @@ public class NewsStoryManager : MonoBehaviour
         Debug.Log("Event Received");
         news = newsStory;
         Debug.Log($"News story received: Money = {news.money}, Entertainment = {news.entertainment}, Awareness = {news.awareness}");
+        
         OnNewsstoryReceived();
-
     }
 
     //runs whenever the unityevent fires, child scripts can run stuff based off it

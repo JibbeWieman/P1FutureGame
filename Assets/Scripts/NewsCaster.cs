@@ -8,8 +8,7 @@ public class NewsCaster : MonoBehaviour
 
     private void Update()
     {
-        //Vector3 targetPosition = new Vector3(this.transform.position.x, targetObject.position.y, this.transform.position.z);
-
         this.transform.LookAt(targetObject);
+        this.transform.rotation = Quaternion.Euler(0, this.transform.eulerAngles.y + 180f, 0);
     }
 }

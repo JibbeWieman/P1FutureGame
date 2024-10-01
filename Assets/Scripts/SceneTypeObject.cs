@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Scene Type", menuName = "ScriptableObjects/SceneType", order = 1)]
 public class SceneTypeObject : ScriptableObject
 {
-    readonly private List<GameObject> objects;
+    private List<GameObject> objects;
     
     public event Action OnAdded;
     public event Action OnRemoved;

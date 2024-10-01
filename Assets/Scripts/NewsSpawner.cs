@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewsShoot : MonoBehaviour
+public class NewsSpawner : MonoBehaviour
 {
-    [SerializeField] private SceneTypeObject NewsStory;
-    [SerializeField] private float spawnInterval = 1f; // Time interval between spawns
+    [SerializeField, Tooltip("Object pool the spawned objects get added to")] private SceneTypeObject NewsStory;
+    [SerializeField] private StatsManager statsManager;
+    [SerializeField, Tooltip("Time between spawns")] private float spawnInterval = 1f;
     
     public int maxStoryAmount = 100; 
 
