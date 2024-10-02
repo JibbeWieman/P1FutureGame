@@ -66,6 +66,14 @@ public class StatsManager : NewsStoryManager
         StartCoroutine(SetBroadcasting());
     }
 
+    private void FixedUpdate()
+    {
+        if (!isBroadcasting) 
+        {
+            moneyStat += viewerStat * 1;
+        }
+    }
+
     protected override void OnNewsstoryReceived()
     {
         base.OnNewsstoryReceived();
