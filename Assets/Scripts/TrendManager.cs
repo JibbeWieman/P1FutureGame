@@ -18,7 +18,6 @@ public class TrendManager : MonoBehaviour
     private List<string> activeTrends = new List<string>();
 
     [SerializeField] private float trendSpawnInterval;
-    private float trendDuration; 
     private Coroutine trendCoroutine;
 
     public UnityEvent<List<GameObject>> onTrendUpdate;
@@ -44,42 +43,38 @@ public class TrendManager : MonoBehaviour
             return;
         }
 
-        // Select a random category
-        int randomCategoryIndex = Random.Range(0, trendTopics.Count);
-        string randomCategoryKey = new List<string>(trendTopics.Keys)[randomCategoryIndex];
+        // Randomly pick a trend
+        string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
 
         // Get the randomly selected list of GameObjects
         List<GameObject> trendingTopic = trendTopics[randomCategoryKey];
-        Debug.Log($"Selected Trend: {randomCategoryKey} with {trendingTopic.Count} items.");
+
+        // Check if it's already active, if not, add it and start the timer
+        if (activeTrends.Contains(randomCategoryKey)) return;
 
         // Add the selected trend to the activeTrends list and update the monitor text
-        if (!activeTrends.Contains(randomCategoryKey))
-        {
-            activeTrends.Add(randomCategoryKey);
-            UpdateTrendMonitorText();
+        activeTrends.Add(randomCategoryKey);
+        UpdateTrendMonitorText();
 
-            // Randomize the trend duration
-            trendDuration = Random.Range(20f, 30f);
+        // Randomize the trend duration
+        float trendDuration = Random.Range(20f, 30f);
+        StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
 
-            StartCoroutine(TrendTimer(randomCategoryKey)); // Start the timer for this trend
-        }
-
-        // Trigger the onTrendUpdate event with the selected list
+        // Trigger the event
         onTrendUpdate?.Invoke(trendingTopic);
     }
 
-    private IEnumerator TrendTimer(string trendingTopic)
+    private IEnumerator TrendTimer(string trendingTopic, float duration)
     {
         // Wait for x seconds before removing the trend
-        yield return new WaitForSeconds(trendDuration);
+        yield return new WaitForSeconds(duration);
 
-        // Remove the current trend from the active trends list if it exists
-        if (activeTrends.Contains(trendingTopic))
+        if (activeTrends.Remove(trendingTopic)) // Remove the trend if it exists
         {
-            activeTrends.Remove(trendingTopic); // Remove the oldest trend (first added)
             UpdateTrendMonitorText(); // Update the text after removal
         }
     }
+
     private void UpdateTrendMonitorText()
     {
         trendMonitorText.text = string.Join(", ", activeTrends); // Join active trends with commas
@@ -89,15 +84,18 @@ public class TrendManager : MonoBehaviour
     {
         while (true)
         {
-            // Call GetRandomTrend every 20-30 seconds
             GetRandomTrend();
 
-            // Randomize trendSpawnInterval for the next iteration
+            // Randomize the next trendSpawnInterval
             trendSpawnInterval = Random.Range(20f, 30f);
-
-            // Wait for x sec for next trend
             yield return new WaitForSeconds(trendSpawnInterval);
         }
+    }
+
+    private string GetRandomKeyFromDictionary(Dictionary<string, List<GameObject>> dictionary)
+    {
+        List<string> keys = new List<string>(dictionary.Keys);
+        return keys[Random.Range(0, keys.Count)];
     }
 }
 

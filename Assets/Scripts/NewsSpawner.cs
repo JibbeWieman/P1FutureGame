@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class NewsSpawner : MonoBehaviour
 {
-    [SerializeField, Tooltip("Object pool the spawned objects get added to")] 
-    private SceneTypeObject NewsStory;
-
     [SerializeField] 
     private StatsManager statsManager;
 

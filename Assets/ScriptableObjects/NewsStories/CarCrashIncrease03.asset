@@ -15,3 +15,5 @@ MonoBehaviour:
   money: 5
   entertainment: 0
   awareness: 10
+  alignment: 0
+  category: 1

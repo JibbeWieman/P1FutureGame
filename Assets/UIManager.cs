@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,8 +8,8 @@ using UnityEngine.UI;
 public struct StatUI
 {
     public TextMeshProUGUI statText;
-    public Image posStatBar; // Bar for positive values
-    public Image negStatBar; // Bar for negative values
+    public Image posStatBar;  // Bar for positive values
+    public Image negStatBar;  // Bar for negative values
 }
 
 public class UIManager : Manager
@@ -18,9 +19,19 @@ public class UIManager : Manager
     public StatUI viewerStat;
     public StatUI awarenessStat;
 
+    // Dictionary to store update flags for each stat type
+    private Dictionary<string, bool> isUpdatingFlags;
+
     public override void Start()
     {
         base.Start();
+        // Initialize the dictionary with default values
+        isUpdatingFlags = new Dictionary<string, bool>
+        {
+            { "Money", false },
+            { "Viewers", false },
+            { "Awareness", false }
+        };
     }
 
     public override void Pause()
@@ -28,14 +39,21 @@ public class UIManager : Manager
         throw new System.NotImplementedException();
     }
 
-    // Method to update stat display
-    public void UpdateStatDisplay(StatUI statUI, int startValue, int endValue, int maxValue, string statType)
+    // Method to update stat display; only starts if the respective stat is not being updated
+    public void UpdateStatDisplay(StatUI statUI, int startValue, int endValue, int maxValue, string statType, bool forceUpdate = false)
     {
-        StartCoroutine(UpdateStatDisplayCoroutine(statUI, startValue, endValue, maxValue, statType));
+        if (!isUpdatingFlags[statType] || forceUpdate)
+        {
+            StartCoroutine(UpdateStatDisplayCoroutine(statUI, startValue, endValue, maxValue, statType));
+        }
     }
 
+    // Coroutine to handle stat lerp animation
     private IEnumerator UpdateStatDisplayCoroutine(StatUI statUI, int startValue, int endValue, int maxValue, string statType)
     {
+        // Mark the respective stat as updating
+        isUpdatingFlags[statType] = true;
+
         float duration = Mathf.Max(0.5f, Mathf.Log10(Mathf.Abs(endValue - startValue) + 1));
         float elapsedTime = 0f;
 
@@ -59,9 +77,12 @@ public class UIManager : Manager
 
         // Ensure final values are set
         UpdateUI(statUI, endValue, endPosFill, endNegFill, statType);
+
+        // Mark the update as complete
+        isUpdatingFlags[statType] = false;
     }
 
-    // Tuple for storing the fill amounts
+    // Helper method to calculate the positive and negative fill amounts
     private (float positiveFill, float negativeFill) GetFillAmounts(int value, int maxValue)
     {
         float positiveFill = value < 0 ? 0 : Mathf.Clamp01((float)value / maxValue);
@@ -69,10 +90,11 @@ public class UIManager : Manager
         return (positiveFill, negativeFill);
     }
 
+    // Method to update the UI elements
     private void UpdateUI(StatUI statUI, int currentValue, float currentPosFillAmount, float currentNegFillAmount, string statType)
     {
         statUI.statText.text = $"{statType}: {currentValue}";
-        statUI.posStatBar.fillAmount = currentPosFillAmount; // Positive fill
-        statUI.negStatBar.fillAmount = currentNegFillAmount; // Negative fill
+        statUI.posStatBar.fillAmount = currentPosFillAmount;  // Positive fill
+        statUI.negStatBar.fillAmount = currentNegFillAmount;  // Negative fill
     }
 }

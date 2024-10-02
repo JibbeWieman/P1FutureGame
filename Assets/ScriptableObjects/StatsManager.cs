@@ -14,6 +14,9 @@ public class StatsManager : NewsStoryManager
 
     #region VARIABLES
 
+    private bool isBroadcasting = false;
+    private bool isUpdatingStat = false;  // Flag to control stat updates
+
     // Statistics
     [Header("Statistics")]
     [SerializeField]
@@ -48,6 +51,8 @@ public class StatsManager : NewsStoryManager
     [SerializeField]
     private float viewerChangeInterval = 2.5f;
 
+    private float vidTime;
+
     #endregion
 
     private void Start()
@@ -58,6 +63,7 @@ public class StatsManager : NewsStoryManager
 
         // Start the coroutine that decreases stats over time
         StartCoroutine(DecreaseStatsOverTime());
+        StartCoroutine(SetBroadcasting());
     }
 
     protected override void OnNewsstoryReceived()
@@ -74,6 +80,9 @@ public class StatsManager : NewsStoryManager
 
     public void UpdateStats(NS_Template news)
     {
+        // Mark that we're currently updating stats
+        isUpdatingStat = true;
+
         int money = news.money;
         int awareness = news.awareness;
         int entertainment = news.entertainment;
@@ -82,6 +91,9 @@ public class StatsManager : NewsStoryManager
         UpdateStat(ref moneyStat, money, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
         UpdateStat(ref awarenessStat, awareness, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
         UpdateStat(ref viewerStat, entertainment, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+
+        // Stat update complete, unlock DecreaseStatsOverTime
+        isUpdatingStat = false;
     }
 
     private void UpdateStat(ref int statValue, int changeAmount, int minValue, int maxValue, StatUI statUI, string statType)
@@ -107,8 +119,24 @@ public class StatsManager : NewsStoryManager
         {
             yield return new WaitForSeconds(viewerChangeInterval);
 
-            int viewerChangeAmount = Random.Range(-3, 2);
-            UpdateStat(ref viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+            // Only decrease stats if we're not updating them elsewhere
+            if (!isUpdatingStat)
+            {
+                int viewerChangeAmount = Random.Range(-3, 2);
+                if (!isBroadcasting) //If not broadcasting, viewers go down more (due to ads)
+                    viewerChangeAmount *= 2;
+
+                UpdateStat(ref viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+            }
         }
+    }
+
+    private IEnumerator SetBroadcasting()
+    {
+        isBroadcasting = true;
+
+        yield return new WaitForSeconds(vidTime);
+
+        isBroadcasting = false;
     }
 }
