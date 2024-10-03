@@ -54,7 +54,7 @@ public class TrendDisable : MonoBehaviour
                     if (story != gameObject) //Exclude self 
                     {
                         Debug.Log($"{story.name} Disabled");
-                        NewsStoryClass newsStoryClass = story.GetComponent<NewsStoryClass>();
+                        NewsStoryClass newsStoryClass = story.GetComponentInChildren<NewsStoryClass>();
                         newsStoryClass._used = true;
                     }
                 }

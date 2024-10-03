@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class NewsStoryClass : MonoBehaviour
 { 
     //[SerializeField] private UnityEvent _updateStats;
-    public bool _used;
+    public bool _used = false;
 
     [SerializeField]
     private SceneTypeObject stateType;
@@ -27,8 +27,8 @@ public class NewsStoryClass : MonoBehaviour
         if (!_used)
         {
             //_updateStats.Invoke();
-            statsManager.AssignNewsStory(template);
             trendDisable.DisableOthers();
+            statsManager.AssignNewsStory(template);
             _used = true;
 
         }
