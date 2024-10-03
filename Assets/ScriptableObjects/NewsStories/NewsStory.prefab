@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 8492423618906550265}
   - component: {fileID: 2533706099193322589}
   - component: {fileID: 2265172921703006434}
+  - component: {fileID: 3933828602472697278}
   m_Layer: 0
   m_Name: NewsStory
   m_TagString: Untagged
@@ -277,6 +278,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 83f37fff84a0b394ba69ddecc2361d29, type: 2}
+--- !u!114 &3933828602472697278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271452722094587741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a66d19ab4e96f4f80cddd75587d04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4964608861527828792
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,8 +472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2539993d1e2e244b79651851bc2e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _used: 0
   stateType: {fileID: 0}
   template: {fileID: 0}
+  trendDisable: {fileID: 3933828602472697278}
 --- !u!1 &7459550738838813769
 GameObject:
   m_ObjectHideFlags: 0

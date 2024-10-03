@@ -120,6 +120,23 @@ public class TrendManager : MonoBehaviour
     }
 
     #endregion
+
+    #region GETTERS
+    public List<GameObject> GetT1()
+    {
+        return T1;
+    }
+
+    public List<GameObject> GetT2()
+    {
+        return T2;
+    }
+
+    public List<GameObject> GetT3()
+    {
+        return T3;
+    }
+    #endregion
 }
 
 

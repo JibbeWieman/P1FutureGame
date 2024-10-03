@@ -59,7 +59,6 @@ public class NewsSpawner : MonoBehaviour
             // Wait for the specified spawn interval before the next story
             yield return new WaitForSeconds(spawnInterval);
         }
-
         isSpawning = false; // Reset spawning state when done
     }
 
