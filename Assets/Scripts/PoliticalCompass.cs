@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class PoliticalCompass : MonoBehaviour
 {
+    #region VARIABLES
+
     // Political position represented as a Vector2
     public Vector2 politicalPosition; // (x: economic scale, y: social scale)
 
-    // Define the quadrants
+    #endregion
+
+    #region ENUMERATIONS
+
+    /// <summary>
+    /// Defines the political quadrants.
+    /// </summary>
     public enum Quadrant
     {
         AuthoritarianLeft,
@@ -14,39 +22,49 @@ public class PoliticalCompass : MonoBehaviour
         LibertarianRight
     }
 
-    void Start()
+    #endregion
+
+    #region METHODS
+
+    private void Start()
     {
-        // Initialize the political position
-        politicalPosition = new Vector2(0f, 0f); // Center of the compass
+        // Initialize the political position to the center of the compass
+        politicalPosition = new Vector2(0f, 0f);
     }
 
-    void Update()
+    private void Update()
     {
-        // Clamp the position to a specific range if necessary
-        politicalPosition.x = Mathf.Clamp(politicalPosition.x, -10f, 10f);
-        politicalPosition.y = Mathf.Clamp(politicalPosition.y, -10f, 10f);
+        ClampPoliticalPosition();
 
         // Determine which quadrant the position falls into
         Quadrant currentQuadrant = GetCurrentQuadrant();
         Debug.Log($"Current Quadrant: {currentQuadrant}");
     }
 
-    // Method to determine the current quadrant based on political position
+    /// <summary>
+    /// Clamps the political position to a specific range.
+    /// </summary>
+    private void ClampPoliticalPosition()
+    {
+        politicalPosition.x = Mathf.Clamp(politicalPosition.x, -10f, 10f);
+        politicalPosition.y = Mathf.Clamp(politicalPosition.y, -10f, 10f);
+    }
+
+    /// <summary>
+    /// Determines the current quadrant based on the political position.
+    /// </summary>
+    /// <returns>The current quadrant of the political compass.</returns>
     private Quadrant GetCurrentQuadrant()
     {
         if (politicalPosition.x < 0)
         {
-            if (politicalPosition.y > 0)
-                return Quadrant.LibertarianLeft;
-            else
-                return Quadrant.AuthoritarianLeft;
+            return politicalPosition.y > 0 ? Quadrant.LibertarianLeft : Quadrant.AuthoritarianLeft;
         }
         else
         {
-            if (politicalPosition.y > 0)
-                return Quadrant.LibertarianRight;
-            else
-                return Quadrant.AuthoritarianRight;
+            return politicalPosition.y > 0 ? Quadrant.LibertarianRight : Quadrant.AuthoritarianRight;
         }
     }
+
+    #endregion
 }

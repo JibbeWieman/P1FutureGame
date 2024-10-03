@@ -628,9 +628,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e8015574ae00341b0c7c1546d05a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  T1: []
-  T2: []
-  T3: []
+  T1:
+  - {fileID: 4308512310000909484, guid: dae00888c2a6f0f479cd60861412fe45, type: 3}
+  - {fileID: 8096539081146363363, guid: 705b461546ee7574f8790e6fd1ecacd4, type: 3}
+  - {fileID: 6882459143066623360, guid: ba22faf018ee62d47943a7029ee2b68f, type: 3}
+  T2:
+  - {fileID: 4308512310000909484, guid: dae00888c2a6f0f479cd60861412fe45, type: 3}
+  - {fileID: 8096539081146363363, guid: 705b461546ee7574f8790e6fd1ecacd4, type: 3}
+  - {fileID: 6882459143066623360, guid: ba22faf018ee62d47943a7029ee2b68f, type: 3}
+  T3:
+  - {fileID: 4308512310000909484, guid: dae00888c2a6f0f479cd60861412fe45, type: 3}
+  - {fileID: 8096539081146363363, guid: 705b461546ee7574f8790e6fd1ecacd4, type: 3}
+  - {fileID: 6882459143066623360, guid: ba22faf018ee62d47943a7029ee2b68f, type: 3}
   trendMonitorText: {fileID: 697839062}
   trendSpawnInterval: 1
   onTrendUpdate:
@@ -7091,9 +7100,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
+      propertyPath: moneyStat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
       propertyPath: sceneType
       value: 
       objectReference: {fileID: 11400000, guid: 771a79e46b832de4c85fa65ec6b00185, type: 2}
+    - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
+      propertyPath: maxMoneyStat
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
+      propertyPath: awarenessStat
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11594,7 +11615,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 2
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -11993,7 +12014,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsManager: {fileID: 6655140567832907822, guid: 48fda198564288f488bd96301942b3eb, type: 3}
   spawnInterval: 1
-  maxStoryAmount: 100
 --- !u!64 &1531275967
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15284,6 +15304,7 @@ GameObject:
   - component: {fileID: 938082920550206608}
   - component: {fileID: 1846259958507641438}
   - component: {fileID: 1309772790698944739}
+  - component: {fileID: 8782395572062943448}
   - component: {fileID: 8782395572062943446}
   - component: {fileID: 8782395572062943445}
   - component: {fileID: 8782395572062943444}
@@ -15537,6 +15558,28 @@ MonoBehaviour:
   colB:
     m_PersistentCalls:
       m_Calls: []
+--- !u!64 &8782395572062943448
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782395572062943442}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2619086233303812490, guid: 7de6393572125884cb5571ee9bab6dbc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

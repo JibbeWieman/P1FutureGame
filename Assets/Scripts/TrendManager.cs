@@ -6,22 +6,31 @@ using UnityEngine.Events;
 
 public class TrendManager : MonoBehaviour
 {
+    #region VARIABLES
+
     [Header("Trends")]
-    [SerializeField] private List<GameObject> T1;
-    [SerializeField] private List<GameObject> T2;
-    [SerializeField] private List<GameObject> T3;
+    [SerializeField] private List<GameObject> T1; // List for Trend 1
+    [SerializeField] private List<GameObject> T2; // List for Trend 2
+    [SerializeField] private List<GameObject> T3; // List for Trend 3
 
     [Header("References")]
-    [SerializeField] private TextMeshProUGUI trendMonitorText;
+    [SerializeField] private TextMeshProUGUI trendMonitorText; // UI Text to display active trends
 
-    private Dictionary<string, List<GameObject>> trendTopics;
-    private List<string> activeTrends = new List<string>();
+    // Private Variables
+    private Dictionary<string, List<GameObject>> trendTopics; // Dictionary to hold trend categories and their associated GameObjects
+    private List<string> activeTrends = new List<string>(); // List to track currently active trends
+    [SerializeField] private float trendSpawnInterval; // Time interval for spawning new trends
+    private Coroutine trendCoroutine; // Coroutine for auto-updating trends
 
-    [SerializeField] private float trendSpawnInterval;
-    private Coroutine trendCoroutine;
+    public UnityEvent<List<GameObject>> onTrendUpdate; // Event triggered when trends are updated
 
-    public UnityEvent<List<GameObject>> onTrendUpdate;
+    #endregion
 
+    #region METHODS
+
+    /// <summary>
+    /// Initializes the TrendManager and starts the auto-trend update process.
+    /// </summary>
     public void Start()
     {
         trendTopics = new Dictionary<string, List<GameObject>>
@@ -35,6 +44,9 @@ public class TrendManager : MonoBehaviour
         trendCoroutine = StartCoroutine(AutoUpdateTrend());
     }
 
+    /// <summary>
+    /// Selects a random trend from the available topics and activates it.
+    /// </summary>
     private void GetRandomTrend()
     {
         if (trendTopics.Count == 0)
@@ -46,10 +58,7 @@ public class TrendManager : MonoBehaviour
         // Randomly pick a trend
         string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
 
-        // Get the randomly selected list of GameObjects
-        List<GameObject> trendingTopic = trendTopics[randomCategoryKey];
-
-        // Check if it's already active, if not, add it and start the timer
+        // Check if it's already active
         if (activeTrends.Contains(randomCategoryKey)) return;
 
         // Add the selected trend to the activeTrends list and update the monitor text
@@ -61,9 +70,12 @@ public class TrendManager : MonoBehaviour
         StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
 
         // Trigger the event
-        onTrendUpdate?.Invoke(trendingTopic);
+        onTrendUpdate?.Invoke(trendTopics[randomCategoryKey]);
     }
 
+    /// <summary>
+    /// Coroutine that manages the duration of the trending topic.
+    /// </summary>
     private IEnumerator TrendTimer(string trendingTopic, float duration)
     {
         // Wait for x seconds before removing the trend
@@ -75,11 +87,17 @@ public class TrendManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the trend monitor UI text to reflect active trends.
+    /// </summary>
     private void UpdateTrendMonitorText()
     {
         trendMonitorText.text = string.Join(", ", activeTrends); // Join active trends with commas
     }
 
+    /// <summary>
+    /// Coroutine to automatically update trends at random intervals.
+    /// </summary>
     private IEnumerator AutoUpdateTrend()
     {
         while (true)
@@ -92,15 +110,20 @@ public class TrendManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets a random key from the specified dictionary.
+    /// </summary>
     private string GetRandomKeyFromDictionary(Dictionary<string, List<GameObject>> dictionary)
     {
         List<string> keys = new List<string>(dictionary.Keys);
         return keys[Random.Range(0, keys.Count)];
     }
+
+    #endregion
 }
 
-// Code below does the same but spawns a button which needs to be clicked to spawn the stories
 
+// Code below does the same but spawns a button which needs to be clicked to spawn the stories
 /* using System.Collections;
 using System.Collections.Generic;
 using TMPro;
