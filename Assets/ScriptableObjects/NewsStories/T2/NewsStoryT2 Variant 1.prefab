@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 2297491417718833939}
   - component: {fileID: 524967090451122848}
   m_Layer: 0
-  m_Name: NewsStoryT1 Variant
+  m_Name: NewsStoryT2 Variant 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: dec9358b12ef3714d90220bce60321e9, type: 2}
+  type: {fileID: 11400000, guid: 75e66d774333aca4e9032b4fa0332d82, type: 2}
 --- !u!1 &4929194140598381257
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,8 +819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2539993d1e2e244b79651851bc2e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  template: {fileID: 11400000, guid: 252de7ee1c2b07f47af990dce12864cf, type: 2}
   _used: 0
   _usedX: {fileID: 2630112867915973511}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
-  trendType: {fileID: 11400000, guid: dec9358b12ef3714d90220bce60321e9, type: 2}
-  template: {fileID: 11400000, guid: 70f7609370d97d34685d56352734f662, type: 2}
+  trendType: {fileID: 11400000, guid: 75e66d774333aca4e9032b4fa0332d82, type: 2}
