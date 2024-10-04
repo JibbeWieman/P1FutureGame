@@ -285,7 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2539993d1e2e244b79651851bc2e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _used: 0
+  _usedX: {fileID: 2288755318425659078}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
+  trendType: {fileID: 11400000, guid: dec9358b12ef3714d90220bce60321e9, type: 2}
   template: {fileID: 11400000, guid: 7ff05bd4f10b1cd47a513f6e14b419a6, type: 2}
 --- !u!1 &1873971579749279020
 GameObject:
@@ -452,6 +455,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5520121684019967029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7933961402304023328}
+  - component: {fileID: 1349411906150993348}
+  - component: {fileID: 2288755318425659078}
+  m_Layer: 0
+  m_Name: Used
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7933961402304023328
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520121684019967029}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.33}
+  m_LocalScale: {x: 1, y: 1, z: 0.99998915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6658673143609834832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.036, y: 0.007}
+  m_SizeDelta: {x: 1.75, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1349411906150993348
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520121684019967029}
+  m_CullTransparentMesh: 1
+--- !u!114 &2288755318425659078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520121684019967029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3bb4a4d15dae7fd4d9ba3087d4d9ad21, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7377225739994426249
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +562,7 @@ RectTransform:
   m_Children:
   - {fileID: 6226879876541566071}
   - {fileID: 5486011984089221003}
+  - {fileID: 7933961402304023328}
   m_Father: {fileID: 2132664246253621695}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -543,6 +622,7 @@ GameObject:
   - component: {fileID: 4521814903137680711}
   - component: {fileID: 7508090736746811107}
   - component: {fileID: 6085509055699767900}
+  - component: {fileID: 4426767333470643522}
   m_Layer: 0
   m_Name: NewsStoryT1 Variant 1
   m_TagString: Untagged
@@ -729,3 +809,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 83f37fff84a0b394ba69ddecc2361d29, type: 2}
+--- !u!114 &4426767333470643522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096539081146363363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: dec9358b12ef3714d90220bce60321e9, type: 2}

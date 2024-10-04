@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 5299665981751046235}
   - component: {fileID: 3292693313147037312}
   - component: {fileID: 6655140567832907822}
+  - component: {fileID: 1125185723613773432}
   m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
@@ -531,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26640bb48bfae4488f3e6ee64573b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneType: {fileID: 0}
+  ST_UIManager: {fileID: 11400000, guid: 771a79e46b832de4c85fa65ec6b00185, type: 2}
   moneyStat: 4
   viewerStat: 100
   awarenessStat: 3
@@ -539,6 +540,20 @@ MonoBehaviour:
   maxViewerStat: 200
   maxAwarenessStat: 100
   viewerChangeInterval: 2.5
+  adMoneyRate: 0.1
+--- !u!114 &1125185723613773432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915958945175507491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
 --- !u!1 &6056140775844676997
 GameObject:
   m_ObjectHideFlags: 0

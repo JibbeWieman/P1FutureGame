@@ -5,43 +5,43 @@ public class StatsManager : NewsStoryManager
 {
     #region REFERENCES
 
-    private UIManager uiManager;
+    protected UIManager uiManager;
 
     [SerializeField]
-    private SceneTypeObject sceneType;
+    private SceneTypeObject ST_UIManager;
 
     #endregion
 
     #region VARIABLES
 
     [Tooltip("Flag to control ad money generation")]
-    private bool isBroadcasting = false;
+    protected bool isBroadcasting = false;
     [Tooltip("Flag to control stat updates")]
-    private bool isUpdatingStat = false;
+    protected bool isUpdatingStat = false;
 
     // Statistics
     [Header("Statistics")]
     [SerializeField]
-    private int moneyStat;
+    protected int moneyStat;
     [SerializeField]
-    private int viewerStat;
+    protected int viewerStat;
     [SerializeField]
-    private int awarenessStat;
+    protected int awarenessStat;
 
     // Maximum values for each statistic
     [Space(5)]
     [Header("Max Values")]
     [SerializeField]
-    private int maxMoneyStat = 200;
+    protected int maxMoneyStat = 200;
     [SerializeField]
-    private int maxViewerStat = 200;
+    protected int maxViewerStat = 200;
     [SerializeField]
-    private int maxAwarenessStat = 200;
+    protected int maxAwarenessStat = 200;
 
     // Minimum values for each statistic
-    private readonly int minMoneyStat = -100;
-    private readonly int minViewerStat = 0;
-    private readonly int minAwarenessStat = -100;
+    protected readonly int minMoneyStat = -100;
+    protected readonly int minViewerStat = 0;
+    protected readonly int minAwarenessStat = -100;
 
     // Viewer change rate
     [Space(5)]
@@ -49,12 +49,12 @@ public class StatsManager : NewsStoryManager
     [SerializeField]
     private float viewerChangeInterval = 2.5f;
 
-    // Ad system configuration
     [Header("Ad System")]
-    [SerializeField]
-    private float adMoneyRate = 0.1f; // Money earned per viewer per second
+    [SerializeField, Tooltip("Money earned per viewer per second")]
+    private float adMoneyRate = 0.1f;
 
-    private float vidTime = 5f;
+    private Coroutine adMoneyCoroutine;
+    private float vidTime = 10f;
 
     #endregion
 
@@ -65,11 +65,11 @@ public class StatsManager : NewsStoryManager
     /// </summary>
     private void Start()
     {
-        uiManager = sceneType.Objects[0].GetComponent<UIManager>();
+        uiManager = ST_UIManager.Objects[0].GetComponent<UIManager>();
         Debug.Assert(uiManager != null);
 
         StartCoroutine(DecreaseStatsOverTime());
-        StartCoroutine(AdMoneyGeneration());
+        adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
     }
 
     #endregion
@@ -89,7 +89,7 @@ public class StatsManager : NewsStoryManager
         int awareness = GetContent(news => news.awareness);
 
         UpdateStats(news);
-        SetBroadcasting();
+        StartCoroutine(SetBroadcasting());
     }
 
     /// <summary>
@@ -138,25 +138,6 @@ public class StatsManager : NewsStoryManager
     #region COROUTINES
 
     /// <summary>
-    /// Generates money from ads over time when not broadcasting.
-    /// </summary>
-    private IEnumerator AdMoneyGeneration()
-    {
-        while (true)
-        {
-            if (!isBroadcasting)
-            {
-                int moneyEarned = Mathf.RoundToInt(viewerStat * adMoneyRate);
-                moneyStat = Mathf.Clamp(moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
-
-                uiManager.UpdateStatDisplay(uiManager.moneyStat, moneyStat, moneyStat, maxMoneyStat, "Money");
-            }
-
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    /// <summary>
     /// Decreases viewer stats over time based on a specified interval.
     /// </summary>
     private IEnumerator DecreaseStatsOverTime()
@@ -186,6 +167,29 @@ public class StatsManager : NewsStoryManager
         yield return new WaitForSeconds(vidTime);
 
         isBroadcasting = false;
+    }
+
+    /// <summary>
+    /// Generates money from ads over time when not broadcasting.
+    /// </summary>
+    private IEnumerator GenerateAdMoney()
+    {
+        while (true)
+        {
+            if (isBroadcasting)
+                Debug.Log("Not making money :(");
+
+            if (!isBroadcasting)
+            {
+                Debug.Log("Making monayyyyyyyy");
+                int moneyEarned = Mathf.RoundToInt(viewerStat * adMoneyRate);
+                moneyStat = Mathf.Clamp(moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
+
+                uiManager.UpdateStatDisplay(uiManager.moneyStat, moneyStat, moneyStat, maxMoneyStat, "Money");
+            }
+
+            yield return new WaitForSeconds(.5f);
+        }
     }
 
     #endregion
