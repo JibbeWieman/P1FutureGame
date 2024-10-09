@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Green Tech Struggles to Compete
   m_EditorClassIdentifier: 
   money: -10
-  entertainment: 5
-  awareness: 20
+  entertainment: 10
+  awareness: 10
   alignment: 2

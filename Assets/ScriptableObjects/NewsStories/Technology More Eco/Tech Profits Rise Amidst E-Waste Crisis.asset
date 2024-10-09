@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Tech Profits Rise Amidst E-Waste Crisis
   m_EditorClassIdentifier: 
-  money: 20
-  entertainment: 10
+  money: 15
+  entertainment: 5
   awareness: -5
   alignment: 1
