@@ -9,9 +9,18 @@ public class TrendManager : MonoBehaviour
     #region VARIABLES
 
     [Header("Trends")]
-    [SerializeField] private List<GameObject> T1; // List for Trend 1
-    [SerializeField] private List<GameObject> T2; // List for Trend 2
-    [SerializeField] private List<GameObject> T3; // List for Trend 3
+    [SerializeField] private List<GameObject> T1;
+    [SerializeField] private List<GameObject> T2;
+    [SerializeField] private List<GameObject> T3;
+    [SerializeField] private List<GameObject> T4;
+    [SerializeField] private List<GameObject> T5;
+    [SerializeField] private List<GameObject> T6;
+    [SerializeField] private List<GameObject> T7;
+    [SerializeField] private List<GameObject> T8;
+    [SerializeField] private List<GameObject> T9;
+    [SerializeField] private List<GameObject> T10;
+    [SerializeField] private List<GameObject> T11;
+    [SerializeField] private List<GameObject> T12;
 
     [Header("References")]
     [SerializeField] private TextMeshProUGUI trendMonitorText; // UI Text to display active trends
@@ -35,9 +44,18 @@ public class TrendManager : MonoBehaviour
     {
         trendTopics = new Dictionary<string, List<GameObject>>
         {
-            { "Trend01", T1 },
-            { "Trend02", T2 },
-            { "Trend03", T3 }
+            { "Climate Change Corpo", T1 },
+            { "Climate Change Eco", T2 },
+            { "Economics Corpo", T3 },
+            { "Economics Eco", T4 },
+            { "Energy Crisis Corpo", T5 },
+            { "Energy Crisis Eco", T6 },
+            { "Food Security Corpo", T7 },
+            { "Food Security Eco", T8 },
+            { "Migration Corpo", T9 },
+            { "Migration Eco", T10 },
+            { "Technology Corpo", T11 },
+            { "Technology Eco", T12 },
         };
 
         // Start the auto-trend update process
