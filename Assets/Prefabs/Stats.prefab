@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 5299665981751046235}
   - component: {fileID: 3292693313147037312}
   - component: {fileID: 6655140567832907822}
+  - component: {fileID: 2914636807255008867}
   - component: {fileID: 1125185723613773432}
   m_Layer: 5
   m_Name: Stats
@@ -533,14 +534,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ST_UIManager: {fileID: 11400000, guid: 771a79e46b832de4c85fa65ec6b00185, type: 2}
-  moneyStat: 4
+  ST_GameManager: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
+  moneyStat: 1
   viewerStat: 100
-  awarenessStat: 3
-  maxMoneyStat: 100
+  awarenessStat: 1
+  maxMoneyStat: 1000
   maxViewerStat: 200
   maxAwarenessStat: 100
   viewerChangeInterval: 2.5
-  adMoneyRate: 0.1
+  adMoneyRate: 0.05
+--- !u!114 &2914636807255008867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915958945175507491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d92bd57ebf35c4478e34646e8bb45a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
 --- !u!114 &1125185723613773432
 MonoBehaviour:
   m_ObjectHideFlags: 0

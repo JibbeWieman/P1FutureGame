@@ -6,9 +6,12 @@ public class StatsManager : NewsStoryManager
     #region REFERENCES
 
     protected UIManager uiManager;
+    protected PoliticalCompass politicalCompass;
 
     [SerializeField]
     private SceneTypeObject ST_UIManager;
+    [SerializeField]
+    private SceneTypeObject ST_GameManager;
 
     #endregion
 
@@ -68,6 +71,9 @@ public class StatsManager : NewsStoryManager
         uiManager = ST_UIManager.Objects[0].GetComponent<UIManager>();
         Debug.Assert(uiManager != null);
 
+        politicalCompass = ST_GameManager.Objects[0].GetComponent<PoliticalCompass>();
+        Debug.Assert(politicalCompass != null);
+
         StartCoroutine(DecreaseStatsOverTime());
         adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
     }
@@ -107,6 +113,8 @@ public class StatsManager : NewsStoryManager
         UpdateStat(ref moneyStat, money, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
         UpdateStat(ref awarenessStat, awareness, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
         UpdateStat(ref viewerStat, entertainment, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+
+        politicalCompass.UpdatePoliticalPosition(news);
 
         isUpdatingStat = false;
     }
