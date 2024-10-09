@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Tech Corporations Collapse as Environment Suffers
   m_EditorClassIdentifier: 
-  money: -20
+  money: -15
   entertainment: 3
   awareness: -10
   alignment: 3

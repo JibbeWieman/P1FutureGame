@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Green Tech Revolutionizes the World
   m_EditorClassIdentifier: 
-  money: 10
-  entertainment: 10
-  awareness: 10
+  money: 5
+  entertainment: 7
+  awareness: 20
   alignment: 0
