@@ -37,7 +37,7 @@ public class NewsStoryClass : MonoBehaviour
         Debug.Assert(stateType.Objects.Count > 0);
         statsManager = stateType.Objects[0].GetComponent<StatsManager>();
         Debug.Assert(statsManager != null);
-        display.text = template.name;
+        //display.text = template.name;
 
         _usedX = GetComponentInChildren<Image>();
         if (_usedX != null)
