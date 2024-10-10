@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2536917555865737585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,5 +822,6 @@ MonoBehaviour:
   template: {fileID: 11400000, guid: 071d518d7fce834498927ffa8fa9660b, type: 2}
   _used: 0
   _usedX: {fileID: 2630112867915973511}
+  display: {fileID: 0}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
   trendType: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}

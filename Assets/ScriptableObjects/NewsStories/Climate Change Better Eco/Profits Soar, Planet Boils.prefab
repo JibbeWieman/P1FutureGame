@@ -369,6 +369,7 @@ MonoBehaviour:
   template: {fileID: 11400000, guid: 0ae7f6e2a28c6d24c9939920820ed71f, type: 2}
   _used: 0
   _usedX: {fileID: 8717511830842018377}
+  display: {fileID: 0}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
   trendType: {fileID: 11400000, guid: 75e66d774333aca4e9032b4fa0332d82, type: 2}
 --- !u!1 &6300180300624154315
@@ -766,7 +767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3728048596697851241
 RectTransform:
   m_ObjectHideFlags: 0
