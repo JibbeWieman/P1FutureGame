@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class NewsStoryClass : MonoBehaviour
 {
@@ -20,8 +19,6 @@ public class NewsStoryClass : MonoBehaviour
     [SerializeField]
     private Image _usedX;
 
-    [SerializeField] private TextMeshProUGUI display;
-
     [SerializeField]
     private SceneTypeObject stateType;
 
@@ -37,7 +34,10 @@ public class NewsStoryClass : MonoBehaviour
         Debug.Assert(stateType.Objects.Count > 0);
         statsManager = stateType.Objects[0].GetComponent<StatsManager>();
         Debug.Assert(statsManager != null);
+<<<<<<< HEAD
         //display.text = template.name;
+=======
+>>>>>>> parent of e85c14b (Added New Asset For News Stories)
 
         _usedX = GetComponentInChildren<Image>();
         if (_usedX != null)
