@@ -72,7 +72,7 @@ public class TrendManager : MonoBehaviour
     /// </summary>
     private void GetRandomTrend()
     {
-        if (trendTopics.Count == 0)
+        if (trendTopics.Count <= 0)
         {
             Debug.LogWarning("No trending topics available.");
             return;
@@ -82,10 +82,11 @@ public class TrendManager : MonoBehaviour
         string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
 
         // Check if it's already active
-        if (activeTrends.Contains(randomCategoryKey)) return;
+        //if (activeTrends.Contains(randomCategoryKey)) return;
 
         // Add the selected trend to the activeTrends list and update the monitor text
         activeTrends.Add(randomCategoryKey);
+
         UpdateTrendMonitorText();
 
         // Randomize the trend duration
@@ -94,6 +95,9 @@ public class TrendManager : MonoBehaviour
 
         // Trigger the event
         onTrendUpdate?.Invoke(trendTopics[randomCategoryKey]);
+
+        // Remove the selected topic from the list to prevent double stories
+        trendTopics.Remove(randomCategoryKey);
     }
 
     /// <summary>
@@ -125,14 +129,11 @@ public class TrendManager : MonoBehaviour
     {
         while (true)
         {
-            if (newsStories.Objects.Count < maxStoryAmount)
-            {
-                GetRandomTrend();
+            GetRandomTrend();
 
-                // Randomize the next trendSpawnInterval
-                trendSpawnInterval = Random.Range(20f, 30f);
-                yield return new WaitForSeconds(trendSpawnInterval);
-            }
+            // Randomize the next trendSpawnInterval
+            trendSpawnInterval = Random.Range(20f, 30f);
+            yield return new WaitForSeconds(trendSpawnInterval);
         }
     }
 
