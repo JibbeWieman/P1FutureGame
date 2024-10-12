@@ -34,10 +34,7 @@ public class NewsStoryClass : MonoBehaviour
         Debug.Assert(stateType.Objects.Count > 0);
         statsManager = stateType.Objects[0].GetComponent<StatsManager>();
         Debug.Assert(statsManager != null);
-<<<<<<< HEAD
-        //display.text = template.name;
-=======
->>>>>>> parent of e85c14b (Added New Asset For News Stories)
+      
 
         _usedX = GetComponentInChildren<Image>();
         if (_usedX != null)
@@ -72,7 +69,7 @@ public class NewsStoryClass : MonoBehaviour
 
     private void DisableNewsList()
     {
-        //Debug.Log($"{trendType}");
+        Debug.Log($"{trendType}");
         if (trendType != null)
         {
             //Debug.Log($"{trendType.Objects.Count}");

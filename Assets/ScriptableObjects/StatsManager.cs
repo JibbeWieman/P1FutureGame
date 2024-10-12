@@ -193,7 +193,7 @@ public class StatsManager : NewsStoryManager
                 int moneyEarned = Mathf.RoundToInt(viewerStat * adMoneyRate);
                 moneyStat = Mathf.Clamp(moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
 
-                uiManager.UpdateStatDisplay(uiManager.moneyStat, moneyStat, moneyStat, maxMoneyStat, "Money");
+                UpdateStat(ref moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
             }
 
             yield return new WaitForSeconds(.5f);

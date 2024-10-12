@@ -274,9 +274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'L bozo died.
-
-    it was their own fault.'
+  m_text: <text>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fbb7c6a04be6d8341934b839f24b42e1, type: 2}
   m_sharedMaterial: {fileID: 4687939059374929122, guid: fbb7c6a04be6d8341934b839f24b42e1, type: 2}
@@ -303,7 +301,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
+  m_fontSize: 0.3
   m_fontSizeBase: 0.2
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -453,15 +451,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4308512310000909484}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.048675474, z: -0, w: 0.99881464}
-  m_LocalPosition: {x: -2.2865496, y: 52.465, z: 3.6937432}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4714684985130849068}
   - {fileID: 5361036791000520886}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 5.58, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8455210099002911752
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -823,4 +821,4 @@ MonoBehaviour:
   _used: 0
   _usedX: {fileID: 2630112867915973511}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
-  trendType: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
+  trendType: {fileID: 11400000, guid: 55b4e872557bd234b9177101374b8933, type: 2}

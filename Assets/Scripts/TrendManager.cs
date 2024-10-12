@@ -25,6 +25,11 @@ public class TrendManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI trendMonitorText; // UI Text to display active trends
 
+    [SerializeField]
+    private SceneTypeObject newsStories;
+
+    private int maxStoryAmount = 6;   // Maximum number of stories to spawn
+
     // Private Variables
     private Dictionary<string, List<GameObject>> trendTopics; // Dictionary to hold trend categories and their associated GameObjects
     private List<string> activeTrends = new List<string>(); // List to track currently active trends
@@ -120,11 +125,14 @@ public class TrendManager : MonoBehaviour
     {
         while (true)
         {
-            GetRandomTrend();
+            if (newsStories.Objects.Count < maxStoryAmount)
+            {
+                GetRandomTrend();
 
-            // Randomize the next trendSpawnInterval
-            trendSpawnInterval = Random.Range(20f, 30f);
-            yield return new WaitForSeconds(trendSpawnInterval);
+                // Randomize the next trendSpawnInterval
+                trendSpawnInterval = Random.Range(20f, 30f);
+                yield return new WaitForSeconds(trendSpawnInterval);
+            }
         }
     }
 

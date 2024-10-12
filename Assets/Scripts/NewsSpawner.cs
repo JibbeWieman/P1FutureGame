@@ -17,8 +17,6 @@ public class NewsSpawner : MonoBehaviour
     [SerializeField, Tooltip("Time between spawns")]
     private float spawnInterval = 1f; // Time interval between story spawns
 
-    private int maxStoryAmount = 100;   // Maximum number of stories to spawn
-
     private bool isSpawning = false;    // Indicates if spawning is currently active
 
     #endregion
