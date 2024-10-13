@@ -291,6 +291,7 @@ MonoBehaviour:
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
   trendType: {fileID: 11400000, guid: f93ebd0bf1e96d54589b33fcc8adf235, type: 2}
   trendManagerType: {fileID: 11400000, guid: 1d697004175918e42a67abda90e4f6ea, type: 2}
+  gameManagerType: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
   trendWait: 5
 --- !u!1 &1873971579749279020
 GameObject:
