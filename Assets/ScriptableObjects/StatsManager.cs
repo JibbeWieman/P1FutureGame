@@ -73,6 +73,12 @@ public class StatsManager : NewsStoryManager
         Debug.Assert(politicalCompass != null);
 
         StartCoroutine(DecreaseStatsOverTime());
+        adMoneyCoroutine = StartCoroutine(DelayStartGenerateAdMoney());
+    }
+
+    private IEnumerator DelayStartGenerateAdMoney()
+    {
+        yield return new WaitForSeconds(1);  // Ensure everything is set up first
         adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
     }
 
