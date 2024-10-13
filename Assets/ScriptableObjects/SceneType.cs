@@ -6,6 +6,11 @@ public class SceneType : MonoBehaviour
 {
     [SerializeField] private SceneTypeObject type;
 
+    public SceneTypeObject GetSceneTypeObject()
+    {
+        return type;
+    }
+
     private void Awake()
     {
         type.Add(gameObject);

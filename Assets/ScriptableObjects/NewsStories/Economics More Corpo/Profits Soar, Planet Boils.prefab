@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 071d518d7fce834498927ffa8fa9660b, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: trendType
+      value: 
+      objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Profits Soar, Planet Boils

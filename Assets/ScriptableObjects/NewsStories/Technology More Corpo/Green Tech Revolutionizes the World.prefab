@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: 5079748ed36ee894b9a3bcdf8d295750, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: a19118c8083757e4aaa0070325c63a95, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Green Tech Revolutionizes the World

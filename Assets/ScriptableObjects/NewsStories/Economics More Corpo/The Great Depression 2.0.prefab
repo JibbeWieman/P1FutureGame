@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 445c5b807f7db50459429b7fff13998c, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: trendType
+      value: 
+      objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: The Great Depression 2.0

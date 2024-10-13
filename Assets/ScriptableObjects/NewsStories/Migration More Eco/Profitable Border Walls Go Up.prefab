@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: ea714c103dc32cd4894582a4379391eb, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 5432e3721f26ab54da22733ff3c174b9, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Profitable Border Walls Go Up

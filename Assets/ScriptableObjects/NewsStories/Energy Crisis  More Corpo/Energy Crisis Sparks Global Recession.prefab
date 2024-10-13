@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: c0ecf94322cd369428e5fe035b831817, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 38d9c56f4d05db34c8a8c172f23e4465, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: trendType
+      value: 
+      objectReference: {fileID: 11400000, guid: c0ecf94322cd369428e5fe035b831817, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Energy Crisis Sparks Global Recession

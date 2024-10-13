@@ -22,7 +22,6 @@ public class NewsStoryManager : MonoBehaviour
     protected virtual void OnNewsstoryReceived()
     {
         Debug.Log("Running Stats Script In Manager");
-
     }
 
     //function used by child scripts to actually get data from the passed through news stories

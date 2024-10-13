@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: trendType
       value: 
       objectReference: {fileID: 11400000, guid: 8e8430a40874eae45a554e78b7cd5bf4, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 40681bacfac2a014a9072c5f693dc061, type: 2}
+    - target: {fileID: 1707176091696245355, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: trendType
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e8430a40874eae45a554e78b7cd5bf4, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Green Economic Plans Lead to Corporate Losses
