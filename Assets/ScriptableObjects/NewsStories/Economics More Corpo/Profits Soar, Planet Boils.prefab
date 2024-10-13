@@ -15,11 +15,11 @@ PrefabInstance:
     - target: {fileID: 1346375522907433711, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 0ae7f6e2a28c6d24c9939920820ed71f, type: 2}
+      objectReference: {fileID: 11400000, guid: 071d518d7fce834498927ffa8fa9660b, type: 2}
     - target: {fileID: 1346375522907433711, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: trendType
       value: 
-      objectReference: {fileID: 11400000, guid: 75e66d774333aca4e9032b4fa0332d82, type: 2}
+      objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
       value: Profits Soar, Planet Boils
@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
-      objectReference: {fileID: 11400000, guid: 75e66d774333aca4e9032b4fa0332d82, type: 2}
+      objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

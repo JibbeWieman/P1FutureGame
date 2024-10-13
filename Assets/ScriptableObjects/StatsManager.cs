@@ -9,8 +9,6 @@ public class StatsManager : NewsStoryManager
     protected PoliticalCompass politicalCompass;
 
     [SerializeField]
-    private SceneTypeObject ST_UIManager;
-    [SerializeField]
     private SceneTypeObject ST_GameManager;
 
     #endregion
@@ -68,7 +66,7 @@ public class StatsManager : NewsStoryManager
     /// </summary>
     private void Start()
     {
-        uiManager = ST_UIManager.Objects[0].GetComponent<UIManager>();
+        uiManager = ST_GameManager.Objects[0].GetComponent<UIManager>();
         Debug.Assert(uiManager != null);
 
         politicalCompass = ST_GameManager.Objects[0].GetComponent<PoliticalCompass>();

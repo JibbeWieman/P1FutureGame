@@ -27,16 +27,11 @@ public class NewsStoryClass : MonoBehaviour
     private Image _usedX;
 
     [SerializeField]
-    private SceneTypeObject stateType;
-
-    [SerializeField]
     private SceneTypeObject trendType;
 
     [SerializeField]
-    private SceneTypeObject trendManagerType;
-
-    [SerializeField]
     private SceneTypeObject gameManagerType;
+
     [SerializeField]
     private float trendWait = 5f;
 
@@ -47,13 +42,11 @@ public class NewsStoryClass : MonoBehaviour
 
     private void Start()
     {
-        Debug.Assert(stateType.Objects.Count > 0);
-        statsManager = stateType.Objects[0].GetComponent<StatsManager>();
+        Debug.Assert(gameManagerType.Objects.Count > 0);
+        statsManager = gameManagerType.Objects[0].GetComponent<StatsManager>();
         Debug.Assert(statsManager != null);
 
-        //Debug.Assert(trendManagerType.Objects.Count > 0);
-        //trendManager = trendManagerType.Objects[0].GetComponent<TrendManager>();
-        //Debug.Assert(trendManager != null);
+
 
         Debug.Assert(gameManagerType.Objects.Count > 0);
         trendManager = gameManagerType.Objects[0].GetComponent<TrendManager>();
