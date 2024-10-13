@@ -1,0 +1,194 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1279474112742244698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8557344861277584094}
+  - component: {fileID: 1836657620005935547}
+  - component: {fileID: 3319179238984333560}
+  - component: {fileID: 7817478133265720516}
+  - component: {fileID: 3075462496877708685}
+  - component: {fileID: 2882920017709525115}
+  - component: {fileID: 604562284479215709}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8557344861277584094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836657620005935547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
+--- !u!114 &3319179238984333560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931a10bd12179a479047f6ed0c912d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  politicalPosition: {x: 0, y: 0}
+  targetMaterial: {fileID: 2100000, guid: 05bc9c5d723ae6a4782190cc893b5389, type: 2}
+  authoritarianLeftSprite: {fileID: 21300000, guid: d6be08deafe0db743af4e1b16f4277af, type: 3}
+  authoritarianRightSprite: {fileID: 21300000, guid: 5ec4c2d82368c3b40819a1b9abf6cfa3, type: 3}
+  libertarianLeftSprite: {fileID: 21300000, guid: 07279a9756d4ad54b970b956e5261fb4, type: 3}
+  libertarianRightSprite: {fileID: 21300000, guid: 36e6510ca83161644840dce398386d96, type: 3}
+  neutralSprite: {fileID: 21300000, guid: 580efce99667c8e4cb501b47108103f4, type: 3}
+--- !u!114 &7817478133265720516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9dc1740e329748428719b2a8193a3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyStat:
+    statText: {fileID: 0}
+    posStatBar: {fileID: 0}
+    negStatBar: {fileID: 0}
+  viewerStat:
+    statText: {fileID: 0}
+    posStatBar: {fileID: 0}
+    negStatBar: {fileID: 0}
+  awarenessStat:
+    statText: {fileID: 0}
+    posStatBar: {fileID: 0}
+    negStatBar: {fileID: 0}
+--- !u!114 &3075462496877708685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e8015574ae00341b0c7c1546d05a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  T1:
+  - {fileID: 2871584942431038146, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+  - {fileID: 2871584942431038146, guid: a522b4577beef1a42af544eefe539979, type: 3}
+  T2:
+  - {fileID: 2871584942431038146, guid: 57ac07f4f1c8c8b46976121d4ea556f2, type: 3}
+  - {fileID: 2871584942431038146, guid: 4995ce6e4a445e540b9eb78a9ba1ed01, type: 3}
+  T3:
+  - {fileID: 2871584942431038146, guid: 3a3427f51500497419188e4c7a7fb1c9, type: 3}
+  - {fileID: 2871584942431038146, guid: ef8c36acbd9629a429a838ffc07686b3, type: 3}
+  T4:
+  - {fileID: 2871584942431038146, guid: dd293f989ad67094c8cfe8516e1c146d, type: 3}
+  - {fileID: 2871584942431038146, guid: 1ab96fd2bbf7c084b974257644f2fc60, type: 3}
+  T5:
+  - {fileID: 2871584942431038146, guid: 65c14d37756292c4dbe39d398b304cd6, type: 3}
+  - {fileID: 2871584942431038146, guid: c282cc3b79b564a41925d7cc3c091483, type: 3}
+  T6:
+  - {fileID: 2871584942431038146, guid: 61e6cd964e20afa48be26984c9e4c684, type: 3}
+  - {fileID: 2871584942431038146, guid: 8a324dc10ea171144a4491316422f4c3, type: 3}
+  T7:
+  - {fileID: 2871584942431038146, guid: babd7c8b2ffab824cbe0e7ace6610b29, type: 3}
+  - {fileID: 2871584942431038146, guid: 8cc54e58194ecf143bf4d372f5432d92, type: 3}
+  T8:
+  - {fileID: 2871584942431038146, guid: 7f3387d4ce71b0548987917f018b06b7, type: 3}
+  - {fileID: 2871584942431038146, guid: 4f1de7dd74fb51447af89be8cbe37521, type: 3}
+  T9:
+  - {fileID: 2871584942431038146, guid: 0f25876653f18ab499cc5a330e5448bc, type: 3}
+  - {fileID: 2871584942431038146, guid: 4c6d2b6322f1f3240b2a1b7e7a0882ce, type: 3}
+  T10:
+  - {fileID: 2871584942431038146, guid: 6869eff7a7d8e7542bd39fb0488ecbcf, type: 3}
+  - {fileID: 2871584942431038146, guid: 2d256aef0e5c7574185190f3e1d3e1bf, type: 3}
+  T11:
+  - {fileID: 2871584942431038146, guid: 63b7812de8c61e7419d684fc3d45a05d, type: 3}
+  - {fileID: 2871584942431038146, guid: 2806c7f80610a984dacc18dd3c51c984, type: 3}
+  T12:
+  - {fileID: 2871584942431038146, guid: 5c3dd1a491712dc458db2875c159b634, type: 3}
+  - {fileID: 2871584942431038146, guid: ecc73c33c007da44494dbe3504034224, type: 3}
+  trendMonitorText: {fileID: 0}
+  newsStories: {fileID: 11400000, guid: 83f37fff84a0b394ba69ddecc2361d29, type: 2}
+  trendSpawnInterval: 1
+  onTrendUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: NewsShoot, Assembly-CSharp
+        m_MethodName: GenerateStory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2882920017709525115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26640bb48bfae4488f3e6ee64573b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ST_GameManager: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
+  moneyStat: 1
+  viewerStat: 500
+  awarenessStat: 1
+  maxMoneyStat: 1000
+  maxViewerStat: 1000
+  maxAwarenessStat: 100
+  viewerChangeInterval: 2.5
+  adMoneyRate: 0.05
+--- !u!114 &604562284479215709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279474112742244698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a88a3d3a787bda4ea7126113eb2ec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
