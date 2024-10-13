@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195564577602651744}
   - component: {fileID: 112964394771433028}
+  - component: {fileID: 5072590190455848088}
   m_Layer: 0
   m_Name: Trend Manager
   m_TagString: Untagged
@@ -56,7 +57,17 @@ MonoBehaviour:
   - {fileID: 4308512310000909484, guid: dae00888c2a6f0f479cd60861412fe45, type: 3}
   - {fileID: 8096539081146363363, guid: 705b461546ee7574f8790e6fd1ecacd4, type: 3}
   - {fileID: 6882459143066623360, guid: ba22faf018ee62d47943a7029ee2b68f, type: 3}
+  T4: []
+  T5: []
+  T6: []
+  T7: []
+  T8: []
+  T9: []
+  T10: []
+  T11: []
+  T12: []
   trendMonitorText: {fileID: 0}
+  newsStories: {fileID: 0}
   trendSpawnInterval: 1
   onTrendUpdate:
     m_PersistentCalls:
@@ -73,3 +84,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5072590190455848088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975279427080303296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709350631c01f142bacfacb00b2fe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: 1d697004175918e42a67abda90e4f6ea, type: 2}

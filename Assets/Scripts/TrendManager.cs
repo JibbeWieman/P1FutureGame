@@ -64,14 +64,16 @@ public class TrendManager : MonoBehaviour
         };
 
         // Start the auto-trend update process
-        trendCoroutine = StartCoroutine(AutoUpdateTrend());
+        //trendCoroutine = StartCoroutine(AutoUpdateTrend());
+        GetRandomTrend();
     }
 
     /// <summary>
     /// Selects a random trend from the available topics and activates it.
     /// </summary>
-    private void GetRandomTrend()
+    public void GetRandomTrend()
     {
+        Debug.Log("Picking Trend");
         if (trendTopics.Count <= 0)
         {
             Debug.LogWarning("No trending topics available.");

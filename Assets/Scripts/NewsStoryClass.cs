@@ -1,5 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class NewsStoryClass : MonoBehaviour
 {
@@ -10,11 +13,15 @@ public class NewsStoryClass : MonoBehaviour
 
     private StatsManager statsManager;
 
+    private TrendManager trendManager;
+
     #endregion
 
     #region VARIABLES
 
     public bool _used = false;
+
+    private bool _called = false;
 
     [SerializeField]
     private Image _usedX;
@@ -25,8 +32,15 @@ public class NewsStoryClass : MonoBehaviour
     [SerializeField]
     private SceneTypeObject trendType;
 
-    #endregion
+    [SerializeField]
+    private SceneTypeObject trendManagerType;
 
+    [SerializeField]
+    private float trendWait = 5f;
+
+    #endregion
+    #region EVENTS
+    #endregion
     #region METHODS
 
     private void Start()
@@ -34,7 +48,11 @@ public class NewsStoryClass : MonoBehaviour
         Debug.Assert(stateType.Objects.Count > 0);
         statsManager = stateType.Objects[0].GetComponent<StatsManager>();
         Debug.Assert(statsManager != null);
-      
+
+        Debug.Assert(trendManagerType.Objects.Count > 0);
+        trendManager = trendManagerType.Objects[0].GetComponent<TrendManager>();
+        Debug.Assert(trendManager != null);
+
 
         _usedX = GetComponentInChildren<Image>();
         if (_usedX != null)
@@ -55,6 +73,7 @@ public class NewsStoryClass : MonoBehaviour
                 _usedX?.gameObject.SetActive(true);
             }
         }
+
     }
 
     public void SendStats()
@@ -64,6 +83,8 @@ public class NewsStoryClass : MonoBehaviour
             statsManager.AssignNewsStory(template);
 
             DisableNewsList();
+            Debug.Log("Sending Timer Signal");
+            StartCoroutine(TrendSpawnCycle());
         }
     }
 
@@ -96,6 +117,21 @@ public class NewsStoryClass : MonoBehaviour
             }
         }
     }
+    private void SendSignal()
+    {
+        
+    }
 
+    #endregion
+
+    #region COROUTINES
+    private IEnumerator TrendSpawnCycle()
+    {
+        Debug.Log("Starting Timer");
+        yield return new WaitForSeconds(trendWait);
+        trendManager.GetRandomTrend();
+        Debug.Log("Sending Spawn Signal");
+
+    }
     #endregion
 }

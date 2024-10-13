@@ -822,3 +822,5 @@ MonoBehaviour:
   _usedX: {fileID: 2630112867915973511}
   stateType: {fileID: 11400000, guid: d8fe883ef7dec194f83f04ee1ae5fa23, type: 2}
   trendType: {fileID: 11400000, guid: fcced55e6c32f124f935882a9f16f74f, type: 2}
+  trendManagerType: {fileID: 11400000, guid: 1d697004175918e42a67abda90e4f6ea, type: 2}
+  trendWait: 5
