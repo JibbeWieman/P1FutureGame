@@ -101,7 +101,6 @@ MonoBehaviour:
   template: {fileID: 0}
   _used: 0
   _usedX: {fileID: 3487777208036042150}
-  trendType: {fileID: 0}
   gameManagerType: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
   trendWait: 5
 --- !u!65 &6832816109826263525
@@ -218,6 +217,7 @@ GameObject:
   - component: {fileID: 2533706099193322589}
   - component: {fileID: 2265172921703006434}
   - component: {fileID: 4294505392523972753}
+  - component: {fileID: 4424548339316416421}
   m_Layer: 0
   m_Name: NewsStory
   m_TagString: Untagged
@@ -417,6 +417,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: {fileID: 0}
+--- !u!114 &4424548339316416421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271452722094587741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4afd9cee1413494aa541306e37005d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedVersion: {fileID: 2974260377478803130, guid: ceaba7228913f02499fddaa4140bf828, type: 3}
 --- !u!1 &4964608861527828792
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7961214642980420573
 RectTransform:
   m_ObjectHideFlags: 0

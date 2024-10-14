@@ -68,6 +68,14 @@ public class TrendManager : MonoBehaviour
         GetRandomTrend();
     }
 
+    private void Update()
+    {
+        if (newsStories.Objects.Count <= 0)
+        {
+            GetRandomTrend();
+        }
+    }
+
     /// <summary>
     /// Selects a random trend from the available topics and activates it.
     /// </summary>
