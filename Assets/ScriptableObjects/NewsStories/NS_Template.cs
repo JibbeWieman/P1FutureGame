@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public enum PoliticalAlignment
 {
@@ -24,5 +25,6 @@ public class NS_Template : ScriptableObject
     public int entertainment;
     public int awareness;
 
-    public PoliticalAlignment alignment;  // Political alignment of the news story
+    public PoliticalAlignment alignment; // Political alignment of the news story
+    public VideoClip fmv;
 }

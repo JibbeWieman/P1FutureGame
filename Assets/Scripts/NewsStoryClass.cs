@@ -12,7 +12,7 @@ public class NewsStoryClass : MonoBehaviour
     private NS_Template template;
 
     private StatsManager statsManager;
-
+    private NewsStoryManager newsStoryManager;
     private TrendManager trendManager;
 
     #endregion
@@ -71,6 +71,9 @@ public class NewsStoryClass : MonoBehaviour
         trendManager = gameManagerType.Objects[0].GetComponent<TrendManager>();
         Debug.Assert(statsManager != null);
 
+        Debug.Assert(gameManagerType.Objects.Count > 0);
+        newsStoryManager = gameManagerType.Objects[0].GetComponent<NewsStoryManager>();
+        Debug.Assert(statsManager != null);
 
         _usedX = GetComponentInChildren<Image>();
         if (_usedX != null)
@@ -98,8 +101,8 @@ public class NewsStoryClass : MonoBehaviour
     {
         if (!_used)
         {
-            statsManager.AssignNewsStory(template);
-
+            //statsManager.AssignNewsStory(template);
+            newsStoryManager.AssignNewsStory(template);
             DisableNewsList();
             Debug.Log("Sending Timer Signal");
             StartCoroutine(TrendSpawnCycle());

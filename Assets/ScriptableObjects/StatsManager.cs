@@ -91,7 +91,6 @@ public class StatsManager : NewsStoryManager
     /// </summary>
     protected override void OnNewsstoryReceived()
     {
-        base.OnNewsstoryReceived();
         Debug.Log("Running Stats Script");
 
         int money = GetContent(news => news.money);
