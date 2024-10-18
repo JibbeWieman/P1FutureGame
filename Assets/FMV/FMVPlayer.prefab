@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e68fe8bcf648f4db99bce9ddd69fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerType: {fileID: 0}
+  gameManagerType: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
   videoPlayer: {fileID: 1661083716911468350}
   negativeDelay: 0

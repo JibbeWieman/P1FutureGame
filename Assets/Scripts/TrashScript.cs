@@ -1,63 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrashScript : MonoBehaviour
 {
-    bool canDestory = false;
+    bool canDestroy = false;
     bool LeverOn = false;
     bool trashIn = false;
-    GameObject trash;
+
+    // List to store multiple trash GameObjects
+    List<GameObject> trashList = new List<GameObject>();
 
     void Update()
     {
-        if(canDestory && LeverOn && trashIn)
+        if (canDestroy && LeverOn && trashIn)
         {
-            //Debug.Log("Destroyed");
-            Destroy(trash.gameObject);
+            // Loop through and destroy all trash GameObjects
+            foreach (GameObject trash in trashList)
+            {
+                if (trash != null) // Ensure the object is not null before destroying
+                {
+                    Destroy(trash.gameObject);
+                }
+            }
+            trashList.Clear(); // Clear the list after all trash is destroyed
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        
         trashIn = true;
-        //Debug.Log("trashIn =" + trashIn);
-        trash = other.gameObject;
+
+        // Add the trash GameObject to the list
+        if (!trashList.Contains(other.gameObject))
+        {
+            trashList.Add(other.gameObject);
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
         trashIn = false;
-        //Debug.Log("trashIn = " + trashIn);
+
+        // Remove the trash GameObject from the list when it exits
+        if (trashList.Contains(other.gameObject))
+        {
+            trashList.Remove(other.gameObject);
+        }
     }
+
     public void TrashState(bool isClosed)
     {
-        if (isClosed) 
-        { 
-            //Debug.Log("closed");
-            canDestory = true;
-        }
-        if (!isClosed) 
-        {
-            //Debug.Log("open"); 
-            canDestory = false;
-        }
+        canDestroy = isClosed; // Set canDestroy based on whether it's closed
     }
 
     public void LeverInactive(bool isColA)
     {
-        if(isColA) 
-        { 
-            //Debug.Log("A"); 
+        if (isColA)
+        {
             LeverOn = false;
         }
     }
 
     public void LeverActive(bool isColB)
     {
-        if(isColB) 
-        { 
-            //Debug.Log("B"); 
+        if (isColB)
+        {
             LeverOn = true;
         }
     }
