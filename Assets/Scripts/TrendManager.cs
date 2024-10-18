@@ -33,10 +33,12 @@ public class TrendManager : MonoBehaviour
     // Private Variables
     private Dictionary<string, List<GameObject>> trendTopics; // Dictionary to hold trend categories and their associated GameObjects
     private List<string> activeTrends = new List<string>(); // List to track currently active trends
-    [SerializeField] private float trendSpawnInterval; // Time interval for spawning new trends
-    private Coroutine trendCoroutine; // Coroutine for auto-updating trends
+    [SerializeField] private float trendSpawnInterval = 25f; // Time interval for spawning new trends
 
     public UnityEvent<List<GameObject>> onTrendUpdate; // Event triggered when trends are updated
+
+    // Timer for delaying the trend update
+    private Timer trendUpdateTimer;
 
     #endregion
 
@@ -63,16 +65,23 @@ public class TrendManager : MonoBehaviour
             { "Technology Eco", T12 },
         };
 
-        // Start the auto-trend update process
-        //trendCoroutine = StartCoroutine(AutoUpdateTrend());
+        // Initialize the timer with the trendSpawnInterval and set autoReset to true
+        trendUpdateTimer = new Timer(trendSpawnInterval, true);
+
+        // Immediately fetch the first random trend
         GetRandomTrend();
     }
 
     private void Update()
     {
-        if (newsStories.Objects.Count <= 0)
+        // Update the timer each frame
+        if (trendUpdateTimer.UpdateTimer())
         {
-            GetRandomTrend();
+            // When the timer elapses, get a new random trend
+            if (newsStories.Objects.Count <= 0)
+            {
+                GetRandomTrend();
+            }
         }
     }
 
@@ -90,9 +99,6 @@ public class TrendManager : MonoBehaviour
 
         // Randomly pick a trend
         string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
-
-        // Check if it's already active
-        //if (activeTrends.Contains(randomCategoryKey)) return;
 
         // Add the selected trend to the activeTrends list and update the monitor text
         activeTrends.Add(randomCategoryKey);
@@ -130,21 +136,6 @@ public class TrendManager : MonoBehaviour
     private void UpdateTrendMonitorText()
     {
         trendMonitorText.text = string.Join("\n", activeTrends); // Join active trends with commas
-    }
-
-    /// <summary>
-    /// Coroutine to automatically update trends at random intervals.
-    /// </summary>
-    private IEnumerator AutoUpdateTrend()
-    {
-        while (true)
-        {
-            GetRandomTrend();
-
-            // Randomize the next trendSpawnInterval
-            trendSpawnInterval = Random.Range(20f, 30f);
-            yield return new WaitForSeconds(trendSpawnInterval);
-        }
     }
 
     /// <summary>
