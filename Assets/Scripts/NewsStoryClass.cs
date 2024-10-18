@@ -41,6 +41,7 @@ public class NewsStoryClass : MonoBehaviour
 
     private void Start()
     {
+        #region CODE THAT MAKES IT SO YOU DON'T HAVE TO SLOT IN SCENETYPE
         // Get all SceneType components in the parent or itself
         SceneType[] sceneTypes = GetComponentsInParent<SceneType>();
 
@@ -62,6 +63,7 @@ public class NewsStoryClass : MonoBehaviour
         {
             Debug.LogError("Couldn't find a valid SceneTypeObject matching the trend format (T1 to T12)!");
         }
+        #endregion
 
         Debug.Assert(gameManagerType.Objects.Count > 0);
         statsManager = gameManagerType.Objects[0].GetComponent<StatsManager>();

@@ -172,11 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ST_GameManager: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
-  moneyStat: 1
-  viewerStat: 500
-  awarenessStat: 1
-  maxMoneyStat: 1000
-  maxViewerStat: 1000
+  _moneyStat: 1000
+  _viewerStat: 1000
+  _awarenessStat: 0
+  maxMoneyStat: 100000
+  maxViewerStat: 100000
   maxAwarenessStat: 100
   viewerChangeInterval: 2.5
   adMoneyRate: 0.01

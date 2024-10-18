@@ -129,7 +129,7 @@ public class TrendManager : MonoBehaviour
     /// </summary>
     private void UpdateTrendMonitorText()
     {
-        trendMonitorText.text = string.Join(", ", activeTrends); // Join active trends with commas
+        trendMonitorText.text = string.Join("\n", activeTrends); // Join active trends with commas
     }
 
     /// <summary>

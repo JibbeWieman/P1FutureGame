@@ -235,8 +235,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.9193454, y: -1.7661386, z: 0.18157199}
-  m_LocalScale: {x: 0.78282, y: 0.78282, z: 0.78282}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.78, y: 0.78, z: 0.78}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4746859443185340637}
   - {fileID: 5398668125223787335}
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedVersion: {fileID: 2974260377478803130, guid: ceaba7228913f02499fddaa4140bf828, type: 3}
+  requiredBreakMagnitude: 7
 --- !u!1 &4964608861527828792
 GameObject:
   m_ObjectHideFlags: 0

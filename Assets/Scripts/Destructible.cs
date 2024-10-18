@@ -3,7 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Destructible : MonoBehaviour
 {
-    [SerializeField] private GameObject destroyedVersion;
+    [SerializeField] 
+    private GameObject destroyedVersion;
+
+    [SerializeField, Range(1,10)]
+    private float requiredBreakMagnitude = 5;
+
     private Rigidbody rb;
 
     private void Start()
@@ -13,7 +18,7 @@ public class Destructible : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (rb.velocity.magnitude >= 2)
+        if (rb.velocity.magnitude >= requiredBreakMagnitude)
         {
             DestroyObject();
         }

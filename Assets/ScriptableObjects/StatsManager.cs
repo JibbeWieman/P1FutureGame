@@ -20,24 +20,25 @@ public class StatsManager : NewsStoryManager
     [Tooltip("Flag to control stat updates")]
     protected bool isUpdatingStat = false;
 
-    // Statistics
     [Header("Statistics")]
-    [SerializeField]
-    protected int moneyStat;
-    [SerializeField]
-    protected int viewerStat;
-    [SerializeField]
-    protected int awarenessStat;
+    [SerializeField] private int _moneyStat;   // Private serialized field for moneyStat
+    [SerializeField] private int _viewerStat;   // Private serialized field for viewerStat
+    [SerializeField] private int _awarenessStat; // Private serialized field for awarenessStat
+
+    // Public properties for stats
+    public int moneyStat => _moneyStat;       // Public getter for moneyStat
+    public int viewerStat => _viewerStat;     // Public getter for viewerStat
+    public int awarenessStat => _awarenessStat; // Public getter for awarenessStat
 
     // Maximum values for each statistic
     [Space(5)]
     [Header("Max Values")]
     [SerializeField]
-    protected int maxMoneyStat = 200;
+    protected int maxMoneyStat = 1000000;
     [SerializeField]
-    protected int maxViewerStat = 200;
+    protected int maxViewerStat = 1000000;
     [SerializeField]
-    protected int maxAwarenessStat = 200;
+    protected int maxAwarenessStat = 100;
 
     // Minimum values for each statistic
     protected readonly int minMoneyStat = -100;
@@ -113,9 +114,9 @@ public class StatsManager : NewsStoryManager
         int awareness = news.awareness;
         int entertainment = news.entertainment;
 
-        UpdateStat(ref moneyStat, money, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
-        UpdateStat(ref awarenessStat, awareness, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
-        UpdateStat(ref viewerStat, entertainment, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+        UpdateStat(ref _moneyStat, money, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
+        UpdateStat(ref _awarenessStat, awareness, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
+        UpdateStat(ref _viewerStat, entertainment, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
 
         politicalCompass.UpdatePoliticalPosition(news);
 
@@ -163,7 +164,7 @@ public class StatsManager : NewsStoryManager
                 if (!isBroadcasting)
                     viewerChangeAmount *= 2;
 
-                UpdateStat(ref viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+                UpdateStat(ref _viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
             }
         }
     }
@@ -193,10 +194,10 @@ public class StatsManager : NewsStoryManager
             if (!isBroadcasting)
             {
                 Debug.Log("Making monayyyyyyyy");
-                int moneyEarned = Mathf.RoundToInt(viewerStat * adMoneyRate);
-                moneyStat = Mathf.Clamp(moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
+                int moneyEarned = Mathf.RoundToInt(_viewerStat * adMoneyRate);
+                _moneyStat = Mathf.Clamp(_moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
 
-                UpdateStat(ref moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
+                UpdateStat(ref _moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
             }
 
             yield return new WaitForSeconds(.5f);
