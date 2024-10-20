@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsManager : NewsStoryManager
@@ -58,6 +59,11 @@ public class StatsManager : NewsStoryManager
     private Coroutine adMoneyCoroutine;
     private float vidTime = 10f;
 
+    [Space(5)]
+    [Header("Live Level Changes")]
+    [SerializeField]
+    private List<GameObject> liveChanges;
+
     #endregion
 
     #region UNITY METHODS
@@ -77,10 +83,27 @@ public class StatsManager : NewsStoryManager
         adMoneyCoroutine = StartCoroutine(DelayStartGenerateAdMoney());
     }
 
-    private IEnumerator DelayStartGenerateAdMoney()
+    private void Update()
     {
-        yield return new WaitForSeconds(1);  // Ensure everything is set up first
-        adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
+        Broadcasting();
+    }
+
+    private void Broadcasting()
+    {
+        if (isBroadcasting)
+        {
+            foreach (GameObject go in liveChanges)
+            {
+                go.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject go in liveChanges)
+            {
+                go.SetActive(false);
+            }
+        }
     }
 
     #endregion
@@ -148,6 +171,12 @@ public class StatsManager : NewsStoryManager
     #endregion
 
     #region COROUTINES
+
+    private IEnumerator DelayStartGenerateAdMoney()
+    {
+        yield return new WaitForSeconds(1);  // Ensure everything is set up first
+        adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
+    }
 
     /// <summary>
     /// Decreases viewer stats over time based on a specified interval.
