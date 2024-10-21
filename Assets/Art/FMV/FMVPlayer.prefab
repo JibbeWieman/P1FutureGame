@@ -116,7 +116,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530685262511351940}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: a9505e771e6e1d7469f2419b8eca22a8, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e68fe8bcf648f4db99bce9ddd69fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startNews:
+    m_PersistentCalls:
+      m_Calls: []
   gameManagerType: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
   videoPlayer: {fileID: 1661083716911468350}
   negativeDelay: 0

@@ -122,6 +122,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &15693035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2871584942431038146, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_Name
+      value: Corporations Unite for Climate Neutrality
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.78246284
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.305
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: a522b4577beef1a42af544eefe539979, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a522b4577beef1a42af544eefe539979, type: 3}
 --- !u!1001 &61667208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1791,6 +1848,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 454730125}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8453388442827693516, guid: 3e960a0996dc6564aa26319581be02e4, type: 3}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNewsstoryReceived
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnNewsstoryReceived
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StatsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FMVPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 604562284479215709, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+      propertyPath: startNews.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1279474112742244698, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -1921,6 +2030,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatText: {fileID: 1804322386}
+--- !u!114 &454730125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2882920017709525115, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
+  m_PrefabInstance: {fileID: 454730121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454730122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26640bb48bfae4488f3e6ee64573b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &454940183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4006,6 +4126,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8453388442827693516, guid: 3e960a0996dc6564aa26319581be02e4, type: 3}
+      propertyPath: negativeDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8530685262511351940, guid: 3e960a0996dc6564aa26319581be02e4, type: 3}
       propertyPath: m_Name
       value: FMVPlayer
@@ -4884,6 +5008,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1489262717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2871584942431038146, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_Name
+      value: Climate Disaster as Corporations Collapse
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5797653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7824548
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.358901
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489575065776846329, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed4f27d82cbcc9444bd85c352e7dc89c, type: 3}
 --- !u!1 &1507900396
 GameObject:
   m_ObjectHideFlags: 0
@@ -11360,6 +11541,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85bad863ffb7a074fb1bcca15c0a7500, type: 3}
   m_PrefabInstance: {fileID: 1854094314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1861975394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861975395}
+  m_Layer: 0
+  m_Name: NewsStoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1861975395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861975394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3110886, y: 54.11904, z: 3.6831772}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2006542572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12109,3 +12321,6 @@ SceneRoots:
   - {fileID: 1257496836}
   - {fileID: 454730121}
   - {fileID: 6027014568282577222}
+  - {fileID: 1861975395}
+  - {fileID: 15693035}
+  - {fileID: 1489262717}

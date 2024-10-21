@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StatsManager : NewsStoryManager
 {
@@ -113,8 +114,9 @@ public class StatsManager : NewsStoryManager
     /// <summary>
     /// Handles the actions taken when a news story is received, including logging and updating stats.
     /// </summary>
-    protected override void OnNewsstoryReceived()
+    public void OnNewsstoryReceived(NS_Template news)
     {
+        this.news = news;
         Debug.Log("Running Stats Script");
 
         int money = GetContent(news => news.money);
