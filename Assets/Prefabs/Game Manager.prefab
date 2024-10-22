@@ -179,7 +179,21 @@ MonoBehaviour:
   maxViewerStat: 100000
   maxAwarenessStat: 100
   viewerChangeInterval: 2.5
-  adMoneyRate: 0.01
+  adTypes:
+  - adMoneyRate: 10
+    adViewerRate: 0
+    adAwarenessRate: -10
+  - adMoneyRate: -10
+    adViewerRate: 10
+    adAwarenessRate: 0
+  - adMoneyRate: 0
+    adViewerRate: -10
+    adAwarenessRate: 10
+  currentAdType:
+    adMoneyRate: 0
+    adViewerRate: 0
+    adAwarenessRate: 0
+  liveChanges: []
 --- !u!114 &604562284479215709
 MonoBehaviour:
   m_ObjectHideFlags: 0

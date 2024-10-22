@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 9127923533579325620}
   - component: {fileID: 2743374870909873786}
   - component: {fileID: 7193712574785091207}
+  - component: {fileID: 2379850796010332866}
   - component: {fileID: 4148711125863441599}
   m_Layer: 0
   m_Name: FrontDesk
@@ -571,6 +572,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6891569676539369743, guid: 0b0145aa881d6284586b4d92c0b33209, type: 3}
+--- !u!65 &2379850796010332866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863411529495092410}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008207297, y: 0.0039337357, z: 0.0013040574}
+  m_Center: {x: 0.008788097, y: 0.046439063, z: 0.0070036887}
 --- !u!65 &4148711125863441599
 BoxCollider:
   m_ObjectHideFlags: 0

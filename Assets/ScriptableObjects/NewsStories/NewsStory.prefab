@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedVersion: {fileID: 2974260377478803130, guid: ceaba7228913f02499fddaa4140bf828, type: 3}
-  requiredBreakMagnitude: 10
+  requiredBreakMagnitude: 7
 --- !u!1 &4964608861527828792
 GameObject:
   m_ObjectHideFlags: 0

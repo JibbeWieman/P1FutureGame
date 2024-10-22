@@ -16,7 +16,7 @@ public class StatsManager : NewsStoryManager
 
     #region VARIABLES
 
-    [Tooltip("Flag to control ad money generation")]
+    [SerializeField, Tooltip("Flag to control ad money generation")]
     protected bool isBroadcasting = false;
     [Tooltip("Flag to control stat updates")]
     protected bool isUpdatingStat = false;
@@ -48,15 +48,29 @@ public class StatsManager : NewsStoryManager
 
     // Viewer change rate
     [Space(5)]
-    [Header("Decrease Rate")]
+    [Header("Stat Decay")]
     [SerializeField]
     private float viewerChangeInterval = 2.5f;
 
-    [Header("Ad System")]
-    [SerializeField, Tooltip("Money earned per viewer per second")]
-    private float adMoneyRate = 0.1f;
+    [System.Serializable]
+    public struct AdTypeStats
+    {
+        public float adMoneyRate;      // Rate at which money is earned per viewer
+        public float adViewerRate;     // Rate at which viewers are impacted
+        public float adAwarenessRate;  // Rate at which awareness is impacted
+    }
 
-    private Coroutine adMoneyCoroutine;
+    [Header("Ad System")]
+
+    [SerializeField]
+    private List<AdTypeStats> adTypes;
+
+    [SerializeField]
+    private AdTypeStats currentAdType;
+    
+    //[SerializeField, Tooltip("Money earned per viewer per second")]
+    //private float adMoneyRate = 0.1f;
+
     private float vidTime = 10f;
 
     [Space(5)]
@@ -79,31 +93,8 @@ public class StatsManager : NewsStoryManager
         politicalCompass = ST_GameManager.Objects[0].GetComponent<PoliticalCompass>();
         Debug.Assert(politicalCompass != null);
 
-        StartCoroutine(DecreaseStatsOverTime());
-        adMoneyCoroutine = StartCoroutine(DelayStartGenerateAdMoney());
-    }
-
-    private void Update()
-    {
-        Broadcasting();
-    }
-
-    private void Broadcasting()
-    {
-        if (isBroadcasting)
-        {
-            foreach (GameObject go in liveChanges)
-            {
-                go.SetActive(true);
-            }
-        }
-        else
-        {
-            foreach (GameObject go in liveChanges)
-            {
-                go.SetActive(false);
-            }
-        }
+        //StartCoroutine(StatsDecay());
+        StartCoroutine(DelayGenerateAdMoney());
     }
 
     #endregion
@@ -155,14 +146,13 @@ public class StatsManager : NewsStoryManager
     /// <param name="maxValue">The maximum value the statistic can take.</param>
     /// <param name="statUI">The UI element representing the statistic.</param>
     /// <param name="statType">The name of the statistic for logging purposes.</param>
-    private void UpdateStat(ref int statValue, int changeAmount, int minValue, int maxValue, StatUI statUI, string statType)
+    private void UpdateStat(ref int statValue, int changeAmount, int min, int max, StatUI statUI, string statType)
     {
-        int newStatValue = statValue + changeAmount;
-        newStatValue = Mathf.Clamp(newStatValue, minValue, maxValue);
+        int newStatValue = Mathf.Clamp(statValue + changeAmount, min, max);
 
         if (uiManager != null)
         {
-            uiManager.UpdateStatDisplay(statUI, statValue, newStatValue, maxValue, statType);
+            uiManager.UpdateStatDisplay(statUI, statValue, newStatValue, max, statType);
         }
 
         statValue = newStatValue;
@@ -170,18 +160,72 @@ public class StatsManager : NewsStoryManager
 
     #endregion
 
-    #region COROUTINES
-
-    private IEnumerator DelayStartGenerateAdMoney()
+    #region AD MANAGEMENT
+    /// <summary>
+    /// Changes the current ad type.
+    /// </summary>
+    /// <param name="adTypeIndex">The index of the ad type to switch to.</param>
+    public void ChangeAdType(int adTypeIndex)
     {
-        yield return new WaitForSeconds(1);  // Ensure everything is set up first
-        adMoneyCoroutine = StartCoroutine(GenerateAdMoney());
+        Debug.Log($"Trying to change ad type to index: {adTypeIndex}");
+
+        if (adTypeIndex >= 0 && adTypeIndex < adTypes.Count)
+        {
+            currentAdType = adTypes[adTypeIndex]; // Assign the corresponding struct
+            Debug.Log($"Ad type changed successfully to index {adTypeIndex}");
+        }
+        else
+        {
+            Debug.LogWarning($"Invalid ad type index: {adTypeIndex}");
+        }
     }
+
+    private IEnumerator DelayGenerateAdMoney()
+    {
+        yield return new WaitForSeconds(2f);  // Ensure everything is set up first
+        StartCoroutine(RunAd());
+    }
+
+    /// <summary>
+    /// Generates money from ads over time when not broadcasting.
+    /// </summary>
+    private IEnumerator RunAd()
+    {
+        while (true)
+        {
+            Debug.Log("Generating ad money loop active.");
+
+            if (isBroadcasting)
+                Debug.Log("Not making money :(");
+
+            if (!isBroadcasting)
+            {
+                Debug.Log("Making monayyyyyyyy");
+
+                int moneyEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adMoneyRate);
+                int awarenessEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adAwarenessRate);
+                int viewersEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adViewerRate);
+
+                UpdateStat(ref _moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
+                UpdateStat(ref _viewerStat, viewersEarned, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+                UpdateStat(ref _awarenessStat, awarenessEarned, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
+                
+                //_moneyStat = Mathf.Clamp(_moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
+                //_viewerStat = Mathf.Clamp(_viewerStat + viewersEarned, minViewerStat, maxViewerStat);
+                //_awarenessStat = Mathf.Clamp(_awarenessStat + awarenessEarned, minAwarenessStat, maxAwarenessStat);
+            }
+
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+    #endregion
+
+    #region COROUTINES
 
     /// <summary>
     /// Decreases viewer stats over time based on a specified interval.
     /// </summary>
-    private IEnumerator DecreaseStatsOverTime()
+    private IEnumerator StatsDecay()
     {
         while (true)
         {
@@ -189,11 +233,8 @@ public class StatsManager : NewsStoryManager
 
             if (!isUpdatingStat)
             {
-                int viewerChangeAmount = Random.Range(-3, 2);
-                if (!isBroadcasting)
-                    viewerChangeAmount *= 2;
-
-                UpdateStat(ref _viewerStat, viewerChangeAmount, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+                int viewerChange = Random.Range(-3, 2) * (isBroadcasting ? 1 : 2);
+                UpdateStat(ref _viewerStat, viewerChange, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
             }
         }
     }
@@ -204,33 +245,12 @@ public class StatsManager : NewsStoryManager
     private IEnumerator SetBroadcasting()
     {
         isBroadcasting = true;
+        foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
 
         yield return new WaitForSeconds(vidTime);
 
         isBroadcasting = false;
-    }
-
-    /// <summary>
-    /// Generates money from ads over time when not broadcasting.
-    /// </summary>
-    private IEnumerator GenerateAdMoney()
-    {
-        while (true)
-        {
-            if (isBroadcasting)
-                Debug.Log("Not making money :(");
-
-            if (!isBroadcasting)
-            {
-                Debug.Log("Making monayyyyyyyy");
-                int moneyEarned = Mathf.RoundToInt(_viewerStat * adMoneyRate);
-                _moneyStat = Mathf.Clamp(_moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
-
-                UpdateStat(ref _moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
-            }
-
-            yield return new WaitForSeconds(.5f);
-        }
+        foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
     }
 
     #endregion
