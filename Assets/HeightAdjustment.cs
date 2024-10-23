@@ -10,7 +10,6 @@ public class HeightAdjustment : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3 (0, direction * Time.deltaTime, 0);
-        Debug.Log("dir " + direction);
     }
 
     public void GoUp(bool goUp)
