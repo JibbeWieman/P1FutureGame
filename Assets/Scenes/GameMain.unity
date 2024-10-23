@@ -10533,14 +10533,6 @@ PrefabInstance:
       value: GearshiftRoot
       objectReference: {fileID: 0}
     - target: {fileID: 6493319828762953568, guid: 36313f6a4524a574c866f269dedceb66, type: 3}
-      propertyPath: ST_GameManager
-      value: 
-      objectReference: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
-    - target: {fileID: 6493319828762953568, guid: 36313f6a4524a574c866f269dedceb66, type: 3}
-      propertyPath: colNr.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6493319828762953568, guid: 36313f6a4524a574c866f269dedceb66, type: 3}
       propertyPath: colNr.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
