@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using System;
 
 public class NewsStoryClass : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class NewsStoryClass : MonoBehaviour
 
     [SerializeField]
     private float trendWait = 5f;
+
+    private Component[] newsStoryHandlers;
 
     #endregion
     #region EVENTS
@@ -74,7 +77,20 @@ public class NewsStoryClass : MonoBehaviour
         Debug.Assert(statsManager != null);
 
         Debug.Assert(gameManagerType.Objects.Count > 0);
-        newsStoryManager = gameManagerType.Objects[0].GetComponent<NewsStoryManager>();
+        newsStoryHandlers = gameManagerType.Objects[0].GetComponents<NewsStoryManager>();
+
+        for (int i = 0; i < newsStoryHandlers.Length; i++)
+        {
+            if (newsStoryHandlers[i] is StatsManager)
+            {
+               statsManager = newsStoryHandlers[i] as StatsManager;
+            }
+            else if (newsStoryHandlers[i] is NewsStoryManager)
+            {
+                newsStoryManager = newsStoryHandlers[i] as NewsStoryManager;
+            }
+        }
+
         Debug.Assert(statsManager != null);
 
         _usedX = GetComponentInChildren<Image>();

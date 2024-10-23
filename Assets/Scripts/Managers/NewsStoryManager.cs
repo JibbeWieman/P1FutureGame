@@ -2,27 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NewsStoryManager : MonoBehaviour
 {
     //reference the news story
     protected NS_Template news;
     //recieves scriptableobject thru unityevent
+    public UnityEvent<NS_Template> startNews;
 
     public void AssignNewsStory(NS_Template newsStory)
     {
         Debug.Log("Event Received");
         news = newsStory;
         Debug.Log($"News story received: Money = {news.money}, Entertainment = {news.entertainment}, Awareness = {news.awareness}");
-        
-        OnNewsstoryReceived();
+
+        startNews.Invoke(newsStory);
     }
 
-    //runs whenever the unityevent fires, child scripts can run stuff based off it
-    protected virtual void OnNewsstoryReceived()
-    {
-        Debug.Log("Running Stats Script In Manager");
-    }
 
     //function used by child scripts to actually get data from the passed through news stories
 
