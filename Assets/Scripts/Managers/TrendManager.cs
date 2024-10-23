@@ -21,6 +21,12 @@ public class TrendManager : MonoBehaviour
     [SerializeField] private List<GameObject> T10;
     [SerializeField] private List<GameObject> T11;
     [SerializeField] private List<GameObject> T12;
+    [SerializeField] private List<GameObject> T13;
+    [SerializeField] private List<GameObject> T14;
+    [SerializeField] private List<GameObject> T15;
+    [SerializeField] private List<GameObject> T16;
+    [SerializeField] private List<GameObject> T17;
+    [SerializeField] private List<GameObject> T18;
 
     [Header("References")]
     [SerializeField] private TextMeshProUGUI trendMonitorText; // UI Text to display active trends
@@ -51,18 +57,24 @@ public class TrendManager : MonoBehaviour
     {
         trendTopics = new Dictionary<string, List<GameObject>>
         {
-            { "Climate Change Corpo", T1 },
-            { "Climate Change Eco", T2 },
-            { "Economics Corpo", T3 },
-            { "Economics Eco", T4 },
-            { "Energy Crisis Corpo", T5 },
-            { "Energy Crisis Eco", T6 },
-            { "Food Security Corpo", T7 },
-            { "Food Security Eco", T8 },
-            { "Migration Corpo", T9 },
-            { "Migration Eco", T10 },
-            { "Technology Corpo", T11 },
-            { "Technology Eco", T12 },
+            { "AI Enables Small Companies to Compete Globally", T1 },
+            { "AI Revolution replaces most jobs", T2 },
+            { "AI vs. Humans Championship", T3 },
+            { "AI Warfare: The New Battlefield of Automated Conflicts", T4 },
+            { "All corporations are ruled by AI", T5 },
+            { "Amazon pledges to make Amazonia fully carbon neutral without harming its citizens.", T6 },
+            { "Flying car falls out of sky, squashes pedestrian", T7 },
+            { "Fossil fuel companies go bankrupt", T8 },
+            { "Mall shopper numbers going down", T9 },
+            { "MEGA Corp builds entire city for workers", T10 },
+            { "Michelin star lab grown food, cultivated right in front of you", T11 },
+            { "New floating highways project", T12 },
+            { "New giant AI server rooms", T13 },
+            { "Robot bees not as good as normal bees", T14 },
+            { "Space waste falls back on Earth", T15 },
+            { "Space waste poses unexpected challenges for future Operations", T16 },
+            { "Tsunamis strike the bottom layer of the city", T17 },
+            { "Wildlife increase in lower layers", T18 },
         };
 
         // Initialize the timer with the trendSpawnInterval and set autoReset to true
