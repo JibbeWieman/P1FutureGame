@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleSceneHandInteraction.unity
     guid: 3496b7f9194c23749bded31b28908b1a
   m_configObjects:
