@@ -16,4 +16,4 @@ MonoBehaviour:
   entertainment: 2000
   awareness: 10
   alignment: 3
-  fmv: {fileID: 0}
+  fmv: {fileID: 32900000, guid: f90c7ec0a8e303d40850ee7dd05b6da5, type: 3}

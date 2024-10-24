@@ -24,6 +24,7 @@ public class FMVPlayer : NewsStoryManager
     {
         videoPlayer = GetComponent<VideoPlayer>();
         trendManager = gameManagerType.Objects[0].GetComponent<TrendManager>();
+        gameObject.SetActive(true);
     }
     public void OnNewsstoryReceived(NS_Template news)
     {
