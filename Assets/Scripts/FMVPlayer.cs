@@ -67,7 +67,7 @@ public class FMVPlayer : NewsStoryManager
 
     IEnumerator DelayedPlayNews(VideoClip video)
     {
-        yield return new WaitForSeconds(0.1f); // Small delay to ensure everything is active
+        yield return new WaitForSeconds(0.3f); // Small delay to ensure everything is active
         PlayNews(video);
     }
 }
