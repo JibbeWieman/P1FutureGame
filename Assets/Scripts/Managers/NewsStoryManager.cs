@@ -22,7 +22,6 @@ public class NewsStoryManager : MonoBehaviour
 
 
     //function used by child scripts to actually get data from the passed through news stories
-
     protected T GetContent<T>(System.Func<NS_Template, T> getter)
     {
         if (news != null)

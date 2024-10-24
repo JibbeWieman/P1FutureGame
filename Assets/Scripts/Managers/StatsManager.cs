@@ -66,7 +66,6 @@ public class StatsManager : NewsStoryManager
     [SerializeField]
     private List<AdTypeStats> adTypes;
 
-    [SerializeField]
     private AdTypeStats currentAdType;
     
     //[SerializeField, Tooltip("Money earned per viewer per second")]

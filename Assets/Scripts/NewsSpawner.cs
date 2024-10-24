@@ -76,6 +76,7 @@ public class NewsSpawner : MonoBehaviour
     private Stack<GameObject> spawnedMoneyPrefabs = new Stack<GameObject>(); // Stack to track spawned money prefabs
     private int previousMoneyStat = 0; // To track the previous money stat
 
+    [SerializeField]
     private int moneyStackWorth = 200;
 
     #endregion

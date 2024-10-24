@@ -19,9 +19,12 @@ public class NewsStoryDetector : MonoBehaviour
     {
         if (_storyAvaliable)
         {
-            var newsStory = newsStoryComponent.GetComponent<NewsStoryClass>();
-            newsStory.SendStats();
+            //var newsStory = newsStoryComponent.GetComponent<NewsStoryClass>();
+            //newsStory.SendStats();
             _storyAvaliable = false;
+
+            NSConfirmedEvent nsConfirmedEvent = Events.NSConfirmedEvent;
+            EventManager.Broadcast(nsConfirmedEvent);
         }
     }
 }
