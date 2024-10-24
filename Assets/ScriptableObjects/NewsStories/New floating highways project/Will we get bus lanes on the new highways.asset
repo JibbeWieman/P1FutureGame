@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Will we get bus lanes on the new highways
   m_EditorClassIdentifier: 
-  money: 5
-  entertainment: 5
+  money: 500
+  entertainment: 500
   awareness: 10
   alignment: 0
   fmv: {fileID: 0}

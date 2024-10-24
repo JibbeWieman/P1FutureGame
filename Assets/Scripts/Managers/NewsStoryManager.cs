@@ -14,8 +14,8 @@ public class NewsStoryManager : MonoBehaviour
     public void AssignNewsStory(NS_Template newsStory)
     {
         Debug.Log("Event Received");
-        news = newsStory;
-        Debug.Log($"News story received: Money = {news.money}, Entertainment = {news.entertainment}, Awareness = {news.awareness}");
+        //news = newsStory;
+        Debug.Log($"News story received: Money = {newsStory.money}, Entertainment = {newsStory.entertainment}, Awareness = {newsStory.awareness}");
 
         startNews.Invoke(newsStory);
     }

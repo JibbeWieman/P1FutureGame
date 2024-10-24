@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Flying cars are
   m_EditorClassIdentifier: 
-  money: -15
-  entertainment: 15
+  money: -1500
+  entertainment: 1500
   awareness: 20
   alignment: 3
   fmv: {fileID: 0}

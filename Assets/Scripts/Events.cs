@@ -18,5 +18,5 @@ public class NSConfirmedEvent : GameEvent
 
 public class NSStatsSentEvent : GameEvent
 {
-    NS_Template template;
+    public NS_Template template;
 }

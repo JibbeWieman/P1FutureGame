@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: The new way
   m_EditorClassIdentifier: 
-  money: 10
-  entertainment: 5
+  money: 1000
+  entertainment: 500
   awareness: 10
   alignment: 0
   fmv: {fileID: 32900000, guid: 61ecf2a8e94506f41acf04707efaf4b1, type: 3}

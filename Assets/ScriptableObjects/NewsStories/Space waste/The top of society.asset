@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: The top of society
   m_EditorClassIdentifier: 
-  money: 5
-  entertainment: 10
+  money: 500
+  entertainment: 1000
   awareness: -25
   alignment: 1
   fmv: {fileID: 0}

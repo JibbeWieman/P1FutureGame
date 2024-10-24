@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: AI Enhances Military
   m_EditorClassIdentifier: 
-  money: 30
-  entertainment: 20
+  money: 3000
+  entertainment: 2000
   awareness: -30
   alignment: 1
   fmv: {fileID: 0}

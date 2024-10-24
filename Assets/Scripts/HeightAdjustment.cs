@@ -6,6 +6,7 @@ public class HeightAdjustment : MonoBehaviour
 {
     float direction = 0;
     [SerializeField] float speed;
+    private Transform playerTransform;
 
     void Update()
     {

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Disgusting new
   m_EditorClassIdentifier: 
-  money: -10
-  entertainment: 15
+  money: -1000
+  entertainment: 1500
   awareness: -15
   alignment: 1
   fmv: {fileID: 32900000, guid: a9505e771e6e1d7469f2419b8eca22a8, type: 3}

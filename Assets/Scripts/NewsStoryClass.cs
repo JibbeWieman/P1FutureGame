@@ -101,7 +101,7 @@ public class NewsStoryClass : MonoBehaviour
             //Debug.Log($"{_usedX.gameObject}");
         }
 
-        EventManager.AddListener<NSConfirmedEvent>(SendStats);
+        //EventManager.AddListener<NSConfirmedEvent>(SendStats);
     }
 
     private void Update()
@@ -117,7 +117,7 @@ public class NewsStoryClass : MonoBehaviour
 
     }
 
-    private void SendStats(NSConfirmedEvent evt)
+    public void SendStats()
     {
         if (!_used)
         {
@@ -128,6 +128,7 @@ public class NewsStoryClass : MonoBehaviour
             StartCoroutine(TrendSpawnCycle());
 
             NSStatsSentEvent sendStats = Events.NSStatsSentEvent;
+            sendStats.template = template;
             EventManager.Broadcast(sendStats);
         }
     }

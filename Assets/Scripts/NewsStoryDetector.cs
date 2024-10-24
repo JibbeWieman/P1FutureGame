@@ -1,4 +1,4 @@
-using OpenCover.Framework.Model;
+//using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +19,13 @@ public class NewsStoryDetector : MonoBehaviour
     {
         if (_storyAvaliable)
         {
-            //var newsStory = newsStoryComponent.GetComponent<NewsStoryClass>();
-            //newsStory.SendStats();
+            var newsStory = newsStoryComponent.GetComponent<NewsStoryClass>();
+            //NS_Template template = newsStoryComponent.GetComponent<NS_Template>();
+            newsStory.SendStats();
             _storyAvaliable = false;
 
-            NSConfirmedEvent nsConfirmedEvent = Events.NSConfirmedEvent;
-            EventManager.Broadcast(nsConfirmedEvent);
+            //NSConfirmedEvent nsConfirmedEvent = Events.NSConfirmedEvent;
+            //EventManager.Broadcast(nsConfirmedEvent);
         }
     }
 }

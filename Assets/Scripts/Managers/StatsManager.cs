@@ -95,6 +95,8 @@ public class StatsManager : NewsStoryManager
 
         //StartCoroutine(StatsDecay());
         StartCoroutine(DelayGenerateAdMoney());
+
+        EventManager.AddListener<NSStatsSentEvent>(OnNewsstoryReceived);
     }
 
     #endregion
@@ -104,16 +106,16 @@ public class StatsManager : NewsStoryManager
     /// <summary>
     /// Handles the actions taken when a news story is received, including logging and updating stats.
     /// </summary>
-    public void OnNewsstoryReceived(NS_Template news)
+    public void OnNewsstoryReceived(NSStatsSentEvent news)
     {
-        this.news = news;
+        this.news = news.template;
         Debug.Log("Running Stats Script");
 
         int money = GetContent(news => news.money);
         int entertainment = GetContent(news => news.entertainment);
         int awareness = GetContent(news => news.awareness);
 
-        UpdateStats(news);
+        UpdateStats(news.template);
         StartCoroutine(SetBroadcasting());
     }
 

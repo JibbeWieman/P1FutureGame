@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f52432fceccd84b91e6244d8d19a16, type: 3}
   m_Name: Lower layers
   m_EditorClassIdentifier: 
-  money: -10
-  entertainment: 5
+  money: -1000
+  entertainment: 500
   awareness: 15
   alignment: 2
   fmv: {fileID: 0}

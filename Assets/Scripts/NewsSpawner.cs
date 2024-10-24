@@ -77,7 +77,7 @@ public class NewsSpawner : MonoBehaviour
     private int previousMoneyStat = 0; // To track the previous money stat
 
     [SerializeField]
-    private int moneyStackWorth = 200;
+    private int moneyStackWorth = 10000;
 
     #endregion
 
