@@ -141,6 +141,12 @@ MonoBehaviour:
   T12:
   - {fileID: 2871584942431038146, guid: 5c3dd1a491712dc458db2875c159b634, type: 3}
   - {fileID: 2871584942431038146, guid: ecc73c33c007da44494dbe3504034224, type: 3}
+  T13: []
+  T14: []
+  T15: []
+  T16: []
+  T17: []
+  T18: []
   trendMonitorText: {fileID: 0}
   newsStories: {fileID: 11400000, guid: 83f37fff84a0b394ba69ddecc2361d29, type: 2}
   trendSpawnInterval: 1
@@ -171,7 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26640bb48bfae4488f3e6ee64573b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startNews:
+    m_PersistentCalls:
+      m_Calls: []
   ST_GameManager: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
+  isBroadcasting: 0
   _moneyStat: 1000
   _viewerStat: 1000
   _awarenessStat: 0
@@ -180,20 +190,17 @@ MonoBehaviour:
   maxAwarenessStat: 100
   viewerChangeInterval: 2.5
   adTypes:
-  - adMoneyRate: 10
-    adViewerRate: 0
-    adAwarenessRate: -10
-  - adMoneyRate: -10
-    adViewerRate: 10
+  - adMoneyRate: 0.1
+    adViewerRate: -0.01
     adAwarenessRate: 0
   - adMoneyRate: 0
-    adViewerRate: -10
-    adAwarenessRate: 10
-  currentAdType:
-    adMoneyRate: 0
+    adViewerRate: 0.1
+    adAwarenessRate: -0.1
+  - adMoneyRate: -0.1
     adViewerRate: 0
-    adAwarenessRate: 0
-  liveChanges: []
+    adAwarenessRate: 0.01
+  liveChanges:
+  - {fileID: 0}
 --- !u!114 &604562284479215709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,3 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a88a3d3a787bda4ea7126113eb2ec79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startNews:
+    m_PersistentCalls:
+      m_Calls: []
