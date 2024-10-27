@@ -6,8 +6,9 @@ using UnityEngine;
 public static class Events
 {
     // Jibbe's Events
-    public static NSConfirmedEvent NSConfirmedEvent = new NSConfirmedEvent();
-    public static NSStatsSentEvent NSStatsSentEvent = new NSStatsSentEvent();
+    public static NSConfirmedEvent NSConfirmedEvent = new();
+    public static NSStatsSentEvent NSStatsSentEvent = new();
+    public static BroadcastEvent BroadcastEvent = new();
 }
 
 
@@ -19,4 +20,12 @@ public class NSConfirmedEvent : GameEvent
 public class NSStatsSentEvent : GameEvent
 {
     public NS_Template template;
+}
+
+/// <summary>
+/// Event that gets fired whenever broadcast gets set to true. Also holds the IsBroadcasting boolean.
+/// </summary>
+public class BroadcastEvent : GameEvent
+{
+    public bool IsBroadcasting;
 }

@@ -37,7 +37,7 @@ public class Destructible : MonoBehaviour
             // Set the instantiated object's parent to match the current object's parent
             //instantiatedObject.transform.SetParent(transform.parent);
 
-            // Optionally destroy the current object
+            // Destroy original GameObject
             Destroy(gameObject);
         }
     }

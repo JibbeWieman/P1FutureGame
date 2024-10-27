@@ -28,9 +28,9 @@ public class StatsManager : NewsStoryManager
     [SerializeField] private int _awarenessStat; // Private serialized field for awarenessStat
 
     // Public properties for stats
-    public int moneyStat => _moneyStat;       // Public getter for moneyStat
-    public int viewerStat => _viewerStat;     // Public getter for viewerStat
-    public int awarenessStat => _awarenessStat; // Public getter for awarenessStat
+    public int MoneyStat => _moneyStat;       // Public getter for moneyStat
+    public int ViewerStat => _viewerStat;     // Public getter for viewerStat
+    public int AwarenessStat => _awarenessStat; // Public getter for awarenessStat
 
     // Maximum values for each statistic
     [Space(5)]
@@ -93,7 +93,7 @@ public class StatsManager : NewsStoryManager
         politicalCompass = ST_GameManager.Objects[0].GetComponent<PoliticalCompass>();
         Debug.Assert(politicalCompass != null);
 
-        //StartCoroutine(StatsDecay());
+        StartCoroutine(StatsDecay());
         StartCoroutine(DelayGenerateAdMoney());
 
         EventManager.AddListener<NSStatsSentEvent>(OnNewsstoryReceived);
@@ -236,7 +236,7 @@ public class StatsManager : NewsStoryManager
 
             if (!isUpdatingStat)
             {
-                int viewerChange = Random.Range(-3, 2) * (isBroadcasting ? 1 : 2);
+                int viewerChange = Random.Range(-30, 25);
                 UpdateStat(ref _viewerStat, viewerChange, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
             }
         }
@@ -247,12 +247,19 @@ public class StatsManager : NewsStoryManager
     /// </summary>
     private IEnumerator SetBroadcasting()
     {
-        isBroadcasting = true;
+        BroadcastEvent evt = Events.BroadcastEvent;
+        evt.IsBroadcasting = true;
+        isBroadcasting = evt.IsBroadcasting;
+
+        EventManager.Broadcast(evt);
+
         foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
 
         yield return new WaitForSeconds(vidTime);
 
-        isBroadcasting = false;
+        evt.IsBroadcasting = false;
+        isBroadcasting = evt.IsBroadcasting;
+
         foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
     }
 

@@ -73,7 +73,7 @@ public class NewsSpawner : MonoBehaviour
 
     #region VARIABLES
 
-    private Stack<GameObject> spawnedMoneyPrefabs = new Stack<GameObject>(); // Stack to track spawned money prefabs
+    private Stack<GameObject> spawnedMoneyPrefabs = new(); // Stack to track spawned money prefabs
     private int previousMoneyStat = 0; // To track the previous money stat
 
     [SerializeField]
@@ -85,7 +85,7 @@ public class NewsSpawner : MonoBehaviour
     private void Start()
     {
         statsManager = FindObjectOfType<StatsManager>();
-        previousMoneyStat = statsManager.moneyStat; // Initialize with the starting money stat
+        previousMoneyStat = statsManager.MoneyStat; // Initialize with the starting money stat
     }
 
     private void Update()
@@ -99,7 +99,7 @@ public class NewsSpawner : MonoBehaviour
     public void UpdateMoneyPrefabs()
     {
         // Calculate the difference between the current and previous moneyStat
-        int moneyDifference = statsManager.moneyStat - previousMoneyStat;
+        int moneyDifference = statsManager.MoneyStat - previousMoneyStat;
 
         // Check if we gained at least 100
         while (moneyDifference >= moneyStackWorth)
@@ -114,7 +114,7 @@ public class NewsSpawner : MonoBehaviour
         }
 
         // If we somehow lose money and need to remove prefabs (optional logic)
-        int moneyToSpawn = statsManager.moneyStat / moneyStackWorth;
+        int moneyToSpawn = statsManager.MoneyStat / moneyStackWorth;
         while (spawnedMoneyPrefabs.Count > moneyToSpawn)
         {
             GameObject lastSpawned = spawnedMoneyPrefabs.Pop();
