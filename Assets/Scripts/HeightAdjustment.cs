@@ -5,12 +5,16 @@ using UnityEngine;
 public class HeightAdjustment : MonoBehaviour
 {
     float direction = 0;
-    [SerializeField] float speed;
-    private Transform playerTransform;
+
+    [SerializeField] 
+    float speed;
+
+    [SerializeField]
+    private Transform cameraOffset;
 
     void Update()
     {
-        transform.position += new Vector3 (0, direction * Time.deltaTime, 0);
+        cameraOffset.position += new Vector3 (0, direction * Time.deltaTime, 0);
     }
 
     public void GoUp(bool goUp)

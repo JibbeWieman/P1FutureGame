@@ -9,6 +9,7 @@ public static class Events
     public static NSConfirmedEvent NSConfirmedEvent = new();
     public static NSStatsSentEvent NSStatsSentEvent = new();
     public static BroadcastEvent BroadcastEvent = new();
+    public static MugFilledEvent MugFilledEvent = new();
 }
 
 
@@ -28,4 +29,11 @@ public class NSStatsSentEvent : GameEvent
 public class BroadcastEvent : GameEvent
 {
     public bool IsBroadcasting;
+}
+
+/// <summary>
+/// Event that fires whenever the player has filled the news presentator's coffee mug. Flag for tutorial.
+/// </summary>
+public class MugFilledEvent : GameEvent
+{
 }

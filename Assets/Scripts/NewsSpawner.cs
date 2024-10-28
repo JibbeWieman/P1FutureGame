@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -61,11 +60,12 @@ public class NewsSpawner : MonoBehaviour
 
     #endregion // End of News Story Spawning Section
 
-    #region MONEY SPAWNING
+    #region MONEY & MUG SPAWNING
 
     #region REFERENCES    
     private StatsManager statsManager;
 
+    [Header("Money Spawning")]
     [SerializeField]
     private GameObject moneyPrefab; // Prefab to spawn for money
 
@@ -79,6 +79,13 @@ public class NewsSpawner : MonoBehaviour
     [SerializeField]
     private int moneyStackWorth = 10000;
 
+    [Header("Mug Spawning")]
+    [SerializeField]
+    private SceneTypeObject ST_Mug;
+
+    [SerializeField]
+    private GameObject MugPrefab;
+
     #endregion
 
     #region METHODS
@@ -91,6 +98,13 @@ public class NewsSpawner : MonoBehaviour
     private void Update()
     {
         UpdateMoneyPrefabs();
+
+        // Ensure that there always is a mug to prevent the player getting stuck in the tutorial
+        // in case they drop the mug outside of the level
+        if (ST_Mug.Objects.Count <= 0)
+        {
+            Instantiate(MugPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     /// <summary>
@@ -125,4 +139,5 @@ public class NewsSpawner : MonoBehaviour
     #endregion
 
     #endregion
+
 }

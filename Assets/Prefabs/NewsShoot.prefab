@@ -239,3 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 1
   moneyPrefab: {fileID: 6367616405522170160, guid: 8c5aacb7798252f45b0213e304535e56, type: 3}
+  moneyStackWorth: 10000
+  ST_Mug: {fileID: 11400000, guid: 847d317818604554ca2a18b64e65a8bb, type: 2}
+  MugPrefab: {fileID: 8779183899044520819, guid: 9ff6ccbb1267b314fb511cc6878b3a49, type: 3}
