@@ -195,10 +195,10 @@ MonoBehaviour:
     adAwarenessRate: 0
   - adMoneyRate: 0
     adViewerRate: 0.1
-    adAwarenessRate: -0.1
+    adAwarenessRate: -0.001
   - adMoneyRate: -0.1
     adViewerRate: 0
-    adAwarenessRate: 0.01
+    adAwarenessRate: 0.001
   liveChanges:
   - {fileID: 0}
 --- !u!114 &604562284479215709
