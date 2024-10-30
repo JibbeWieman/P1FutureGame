@@ -125,7 +125,7 @@ public class NewsStoryClass : MonoBehaviour
             newsStoryManager.AssignNewsStory(template);
             DisableNewsList();
             Debug.Log("Sending Timer Signal");
-            StartCoroutine(TrendSpawnCycle());
+            //StartCoroutine(TrendSpawnCycle());
 
             NSStatsSentEvent sendStats = Events.NSStatsSentEvent;
             sendStats.template = template;
@@ -189,13 +189,13 @@ public class NewsStoryClass : MonoBehaviour
     #endregion
 
     #region COROUTINES
-    private IEnumerator TrendSpawnCycle()
-    {
-        Debug.Log("Starting Timer");
-        yield return new WaitForSeconds(trendWait);
-        trendManager.GetRandomTrend();
-        Debug.Log("Sending Spawn Signal");
+    //private IEnumerator TrendSpawnCycle()
+    //{
+    //    Debug.Log("Starting Timer");
+    //    yield return new WaitForSeconds(trendWait);
+    //    trendManager.GetRandomTrend();
+    //    Debug.Log("Sending Spawn Signal");
 
-    }
+    //}
     #endregion
 }

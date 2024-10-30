@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Events;
+using System;
 
 public class FMVPlayer : NewsStoryManager
 {
@@ -17,18 +18,31 @@ public class FMVPlayer : NewsStoryManager
     private VideoPlayer videoPlayer;
 
     [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
     private int negativeDelay;
 
 
     private void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
-        trendManager = gameManagerType.Objects[0].GetComponent<TrendManager>();
+        videoPlayer.controlledAudioTrackCount = 1;
+        videoPlayer.EnableAudioTrack(0, true);
+        videoPlayer.SetTargetAudioSource(0, audioSource);
+
+        //trendManager = gameManagerType.Objects[0].GetComponent<TrendManager>();
         gameObject.SetActive(true);
+        EventManager.AddListener<NSStatsSentEvent>(OnNewsstoryReceived);
     }
-    public void OnNewsstoryReceived(NS_Template news)
+    private void Start()
     {
-        this.news = news;
+        GetNewsStoryEvent getNews = Events.GetNewsStoryEvent;
+        EventManager.Broadcast(getNews);
+    }
+    public void OnNewsstoryReceived(NSStatsSentEvent evt)
+    {
+        this.news = evt.template;
         Debug.Log("Running FMV Script");
         VideoClip video = GetContent(news => news.fmv);
         StartCoroutine(DelayedPlayNews(video));
@@ -59,8 +73,9 @@ public class FMVPlayer : NewsStoryManager
         {
             if (videoPlayer.time >= spawnTime)
             {
-                trendManager.GetRandomTrend();
-
+                GetNewsStoryEvent GetNews = Events.GetNewsStoryEvent;
+                EventManager.Broadcast(GetNews);
+                break;
             }
             yield return null;
         }

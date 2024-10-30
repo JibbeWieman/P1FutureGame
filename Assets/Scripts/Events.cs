@@ -10,6 +10,8 @@ public static class Events
     public static NSStatsSentEvent NSStatsSentEvent = new();
     public static BroadcastEvent BroadcastEvent = new();
     public static MugFilledEvent MugFilledEvent = new();
+    //Sebastian's (Awesome) events
+    public static GetNewsStoryEvent GetNewsStoryEvent = new();
 }
 
 
@@ -35,5 +37,12 @@ public class BroadcastEvent : GameEvent
 /// Event that fires whenever the player has filled the news presentator's coffee mug. Flag for tutorial.
 /// </summary>
 public class MugFilledEvent : GameEvent
+{
+}
+
+// Sebastian's (awesome) events
+
+//Event that gets fired whenever anything needs new news stories to be generated
+public class GetNewsStoryEvent : GameEvent
 {
 }

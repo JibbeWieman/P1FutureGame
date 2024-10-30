@@ -50,11 +50,9 @@ public class TrendManager : MonoBehaviour
 
     #region METHODS
 
-    /// <summary>
-    /// Initializes the TrendManager and starts the auto-trend update process.
-    /// </summary>
-    public void Start()
+    private void Awake()
     {
+
         trendTopics = new Dictionary<string, List<GameObject>>
         {
             { "AI Enables Small Companies to Compete Globally", T1 },
@@ -76,38 +74,35 @@ public class TrendManager : MonoBehaviour
             { "Tsunamis strike the bottom layer of the city", T17 },
             { "Wildlife increase in lower layers", T18 },
         };
+        EventManager.AddListener<GetNewsStoryEvent>(GetRandomTrend);
+    }
+
+    /// <summary>
+    /// Initializes the TrendManager and starts the auto-trend update process.
+    /// </summary>
+    public void Start()
+    {
 
         // Initialize the timer with the trendSpawnInterval and set autoReset to true
-        trendUpdateTimer = new Timer(trendSpawnInterval, true);
+        //trendUpdateTimer = new Timer(trendSpawnInterval, true);
 
         // Immediately fetch the first random trend
-        GetRandomTrend();
+        // had to temporarily move this to FMV player until the tutorial is in 
+
     }
 
-    private void Update()
-    {
-        // Update the timer each frame
-        if (trendUpdateTimer.UpdateTimer())
-        {
-            // When the timer elapses, get a new random trend
-            if (newsStories.Objects.Count <= 0)
-            {
-                GetRandomTrend();
-            }
-        }
-    }
 
     /// <summary>
     /// Selects a random trend from the available topics and activates it.
     /// </summary>
-    public void GetRandomTrend()
+    public void GetRandomTrend(GetNewsStoryEvent getNews)
     {
         Debug.Log("Picking Trend");
-        if (trendTopics.Count <= 0)
-        {
-            Debug.LogWarning("No trending topics available.");
-            return;
-        }
+        //if (trendTopics.Count <= 0)
+        //{
+        //    Debug.LogWarning("No trending topics available.");
+        //    return;
+        //}
 
         // Randomly pick a trend
         string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
@@ -117,9 +112,9 @@ public class TrendManager : MonoBehaviour
 
         UpdateTrendMonitorText();
 
-        // Randomize the trend duration
-        float trendDuration = Random.Range(20f, 30f);
-        StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
+        //// Randomize the trend duration
+        //float trendDuration = Random.Range(20f, 30f);
+        //StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
 
         // Trigger the event
         onTrendUpdate?.Invoke(trendTopics[randomCategoryKey]);
@@ -131,16 +126,16 @@ public class TrendManager : MonoBehaviour
     /// <summary>
     /// Coroutine that manages the duration of the trending topic.
     /// </summary>
-    private IEnumerator TrendTimer(string trendingTopic, float duration)
-    {
-        // Wait for x seconds before removing the trend
-        yield return new WaitForSeconds(duration);
+    //private IEnumerator TrendTimer(string trendingTopic, float duration)
+    //{
+    //    // Wait for x seconds before removing the trend
+    //    yield return new WaitForSeconds(duration);
 
-        if (activeTrends.Remove(trendingTopic)) // Remove the trend if it exists
-        {
-            UpdateTrendMonitorText(); // Update the text after removal
-        }
-    }
+    //    if (activeTrends.Remove(trendingTopic)) // Remove the trend if it exists
+    //    {
+    //        UpdateTrendMonitorText(); // Update the text after removal
+    //    }
+    //}
 
     /// <summary>
     /// Updates the trend monitor UI text to reflect active trends.
