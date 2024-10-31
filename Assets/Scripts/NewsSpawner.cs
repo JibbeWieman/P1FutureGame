@@ -68,6 +68,9 @@ public class NewsSpawner : MonoBehaviour
     [Header("Money Spawning")]
     [SerializeField]
     private GameObject moneyPrefab; // Prefab to spawn for money
+    
+    [SerializeField]
+    private GameObject moneyAwardPrefab; // Prefab to spawn for money
 
     #endregion
 
@@ -104,6 +107,13 @@ public class NewsSpawner : MonoBehaviour
         if (ST_Mug.Objects.Count <= 0)
         {
             Instantiate(MugPrefab, transform.position, Quaternion.identity);
+        }
+
+        // Spawn award if player has earned enough money
+        if (statsManager.MoneyStat >= 100000 && moneyAwardPrefab != null)
+        {
+            Instantiate(moneyAwardPrefab, transform.position, Quaternion.identity);
+            moneyAwardPrefab = null;
         }
     }
 
