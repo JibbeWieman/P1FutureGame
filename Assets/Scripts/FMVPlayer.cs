@@ -9,12 +9,11 @@ using UnityEditor.Rendering;
 public class FMVPlayer : NewsStoryManager
 {
     private TrendManager trendManager;
-
+    [Header("Type")]
     [SerializeField]
     private SceneTypeObject gameManagerType;
 
-    private VideoClip video;
-
+    [Header("References")]
     [SerializeField]
     private VideoPlayer videoPlayer;
 
@@ -22,17 +21,39 @@ public class FMVPlayer : NewsStoryManager
     private AudioSource audioSource;
 
     [SerializeField]
+    private Light light1;
+
+    //[SerializeField]
+    //private Light light2;
+
+    [SerializeField]
+    private Light light3;
+
+    [Header("Delays")]
+    [SerializeField]
     private int negativeDelay;
 
     [SerializeField]
+    private float lightDelay;
+
+    [Header("Idle Videos")]
+    [SerializeField]
     private List<VideoClip> idleVideos;
 
-    private Animator animator;
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip lightsOn;
+
+    [SerializeField]
+    private AudioClip lightsOff;
+
+    private VideoClip video;
 
     private VideoClip currentIdleVideo;
 
     private bool isBroadcasting = false;
 
+    private Animator animator;
 
     private void Awake()
     {
@@ -67,11 +88,21 @@ public class FMVPlayer : NewsStoryManager
         animator.SetBool("IsBroadcasting", true);
         isBroadcasting = true;
 
-        //start playing the news story
-        PlayNews(video);
+        //start playing the news story after turning the lights off and on
+        StartCoroutine(ToggleLights(() => PlayNews(video)));
+
     }
 
     private void PlayIdle()
+    {
+        //set the state to not broadcasting
+        animator.SetBool("IsBroadcasting", false);
+        isBroadcasting = false;
+        StartCoroutine(ToggleLights(PlayIdleVideo));
+
+    }
+
+    private void PlayIdleVideo()
     {
         //make sure there's actual videos loaded in (null check)
         if (idleVideos == null || idleVideos.Count == 0)
@@ -80,11 +111,6 @@ public class FMVPlayer : NewsStoryManager
             return;
         }
 
-
-        //set the state to not broadcasting
-        animator.SetBool("IsBroadcasting", false);
-        isBroadcasting = false;
-
         //set the current idle video to a random one picked from the list
         currentIdleVideo = idleVideos[UnityEngine.Random.Range(0, idleVideos.Count)];
 
@@ -92,6 +118,7 @@ public class FMVPlayer : NewsStoryManager
         videoPlayer.clip = currentIdleVideo;
         //make sure it isnt looping
         videoPlayer.isLooping = false;
+
         //play the video
         videoPlayer.Play();
     }
@@ -145,6 +172,27 @@ public class FMVPlayer : NewsStoryManager
         }
     }
 
+    private IEnumerator ToggleLights(Action onComplete)
+    {
+
+        audioSource.clip = lightsOff;
+        audioSource.Play();
+        //Turn off lights
+        light1.enabled = false;
+        //light2.enabled = false;
+        light3.enabled = false;
+
+        //Wait
+        yield return new WaitForSeconds(lightDelay);
+        onComplete?.Invoke();
+
+        audioSource.clip = lightsOn;
+        audioSource.Play();
+        //Turn on lights
+        light1.enabled = true;
+        //light2.enabled = true;
+        light3.enabled = true;
+    }
 
     private void OnDestroy()
     {
