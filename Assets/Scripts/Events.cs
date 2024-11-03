@@ -8,7 +8,8 @@ public static class Events
     // Jibbe's Events
     public static NSConfirmedEvent NSConfirmedEvent = new();
     public static NSStatsSentEvent NSStatsSentEvent = new();
-    public static BroadcastEvent BroadcastEvent = new();
+    public static BroadcastStartEvent BroadcastStartEvent = new();
+    public static BroadcastEndEvent BroadcastEndEvent = new();
     public static MugFilledEvent MugFilledEvent = new();
     //Sebastian's (Awesome) events
     public static GetNewsStoryEvent GetNewsStoryEvent = new();
@@ -28,9 +29,13 @@ public class NSStatsSentEvent : GameEvent
 /// <summary>
 /// Event that gets fired whenever broadcast gets set to true. Also holds the IsBroadcasting boolean.
 /// </summary>
-public class BroadcastEvent : GameEvent
+public class BroadcastStartEvent : GameEvent
 {
     public bool IsBroadcasting;
+}
+
+public class BroadcastEndEvent : GameEvent
+{
 }
 
 /// <summary>

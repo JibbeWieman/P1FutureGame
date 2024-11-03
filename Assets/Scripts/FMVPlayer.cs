@@ -55,6 +55,8 @@ public class FMVPlayer : NewsStoryManager
 
     private Animator animator;
 
+    BroadcastStartEvent broadcastStartEvent = Events.BroadcastStartEvent;
+
     private void Awake()
     {
         //get component references
@@ -98,6 +100,7 @@ public class FMVPlayer : NewsStoryManager
         //set the state to not broadcasting
         animator.SetBool("IsBroadcasting", false);
         isBroadcasting = false;
+
         StartCoroutine(ToggleLights(PlayIdleVideo));
 
     }
@@ -125,6 +128,9 @@ public class FMVPlayer : NewsStoryManager
 
     private void PlayNews(VideoClip video)
     {
+        EventManager.Broadcast(broadcastStartEvent);
+        broadcastStartEvent.IsBroadcasting = true;
+
         //set video player's video to video assigned 
         videoPlayer.clip = video;
         //make sure it isnt looping
@@ -147,6 +153,11 @@ public class FMVPlayer : NewsStoryManager
         {
             PlayIdle();
         }
+
+        broadcastStartEvent.IsBroadcasting = false;
+
+        BroadcastEndEvent endBroadcast = Events.BroadcastEndEvent;
+        EventManager.Broadcast(endBroadcast);
     }
     private IEnumerator CheckVideoTime()
     {

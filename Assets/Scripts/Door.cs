@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator animator;
-    readonly BroadcastEvent evt = Events.BroadcastEvent;
+    readonly BroadcastStartEvent evt = Events.BroadcastStartEvent;
 
     private void Start()
     {

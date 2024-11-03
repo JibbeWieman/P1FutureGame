@@ -16,8 +16,11 @@ public class StatsManager : NewsStoryManager
 
     #region VARIABLES
 
-    [SerializeField, Tooltip("Flag to control ad money generation")]
-    protected bool isBroadcasting = false;
+    //[SerializeField, Tooltip("Flag to control ad money generation")]
+    //protected bool isBroadcasting = false;
+
+    BroadcastStartEvent flag = Events.BroadcastStartEvent;
+
     [Tooltip("Flag to control stat updates")]
     protected bool isUpdatingStat = false;
 
@@ -70,12 +73,12 @@ public class StatsManager : NewsStoryManager
     //[SerializeField, Tooltip("Money earned per viewer per second")]
     //private float adMoneyRate = 0.1f;
 
-    private float vidTime = 10f;
+    //private float vidTime = 10f;
 
-    [Space(5)]
-    [Header("Live Level Changes")]
-    [SerializeField]
-    private List<GameObject> liveChanges;
+    //[Space(5)]
+    //[Header("Live Level Changes")]
+    //[SerializeField]
+    //private List<GameObject> liveChanges;
 
     #endregion
 
@@ -115,7 +118,7 @@ public class StatsManager : NewsStoryManager
         int awareness = GetContent(news => news.awareness);
 
         UpdateStats(news.template);
-        StartCoroutine(SetBroadcasting());
+        //StartCoroutine(SetBroadcasting());
     }
 
     /// <summary>
@@ -197,10 +200,10 @@ public class StatsManager : NewsStoryManager
         {
             Debug.Log("Generating ad money loop active.");
 
-            if (isBroadcasting)
+            if (flag.IsBroadcasting)
                 Debug.Log("Not making money :(");
 
-            if (!isBroadcasting)
+            if (!flag.IsBroadcasting)
             {
                 Debug.Log("Making monayyyyyyyy");
 
@@ -244,23 +247,23 @@ public class StatsManager : NewsStoryManager
     /// <summary>
     /// Sets the broadcasting state and manages the timing of broadcasting.
     /// </summary>
-    private IEnumerator SetBroadcasting()
-    {
-        BroadcastEvent evt = Events.BroadcastEvent;
-        evt.IsBroadcasting = true;
-        isBroadcasting = evt.IsBroadcasting;
+    //private IEnumerator SetBroadcasting()
+    //{
+    //    BroadcastEvent evt = Events.BroadcastEvent;
+    //    evt.IsBroadcasting = true;
+    //    isBroadcasting = evt.IsBroadcasting;
 
-        EventManager.Broadcast(evt);
+    //    EventManager.Broadcast(evt);
 
-        foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
+    //    foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
 
-        yield return new WaitForSeconds(vidTime);
+    //    yield return new WaitForSeconds(vidTime);
 
-        evt.IsBroadcasting = false;
-        isBroadcasting = evt.IsBroadcasting;
+    //    evt.IsBroadcasting = false;
+    //    isBroadcasting = evt.IsBroadcasting;
 
-        foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
-    }
+    //    foreach (var obj in liveChanges) obj.SetActive(isBroadcasting);
+    //}
 
     #endregion
 }

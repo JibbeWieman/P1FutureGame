@@ -14,7 +14,10 @@ public class HeightAdjustment : MonoBehaviour
 
     void Update()
     {
-        cameraOffset.position += new Vector3 (0, direction * Time.deltaTime, 0);
+        if (cameraOffset.position.y > 0.1 && cameraOffset.position.y < 3.5)
+        {
+            cameraOffset.position += new Vector3(0, direction * Time.deltaTime, 0);
+        }
     }
 
     public void GoUp(bool goUp)
@@ -33,3 +36,4 @@ public class HeightAdjustment : MonoBehaviour
             direction = 0;
     }    
 }
+//3.5 & 0
