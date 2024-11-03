@@ -21,6 +21,10 @@ public class FMVPlayer : NewsStoryManager
     private AudioSource audioSource;
 
     [SerializeField]
+    private AudioSource musicPlayer;
+
+
+    [SerializeField]
     private Light light1;
 
     //[SerializeField]
@@ -46,6 +50,12 @@ public class FMVPlayer : NewsStoryManager
 
     [SerializeField]
     private AudioClip lightsOff;
+
+    [SerializeField]
+    private AudioClip broadcastBGM;
+
+    [SerializeField]
+    private AudioClip idleBGM;
 
     private VideoClip video;
 
@@ -135,6 +145,8 @@ public class FMVPlayer : NewsStoryManager
         videoPlayer.clip = video;
         //make sure it isnt looping
         videoPlayer.isLooping = false;
+        musicPlayer.clip = broadcastBGM;
+        musicPlayer.Play();
         //play the video
         videoPlayer.Play();
         //start checking for when to drop the new news stories
@@ -148,6 +160,9 @@ public class FMVPlayer : NewsStoryManager
         {
             animator.SetBool("IsBroadcasting", false);
             isBroadcasting = false;
+            musicPlayer.Stop();
+            musicPlayer.clip = idleBGM;
+            musicPlayer.Play();
             PlayIdle();
         } else
         {

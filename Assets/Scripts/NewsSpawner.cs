@@ -14,6 +14,8 @@ public class NewsSpawner : MonoBehaviour
 
     private bool isSpawning = false; // Indicates if news stories are currently spawning
 
+    [SerializeField]
+    private AudioSource audioSource;
     #endregion
 
     #region METHODS
@@ -45,6 +47,8 @@ public class NewsSpawner : MonoBehaviour
 
         foreach (GameObject prefab in prefabs)
         {
+
+            audioSource.Play();
             // Spawn the news story
             GameObject instantiatedStory = Instantiate(prefab, transform.position, Quaternion.identity);
             instantiatedStory.GetComponentInChildren<TextMeshProUGUI>().text = prefab.name;
