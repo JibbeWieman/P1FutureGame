@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 604562284479215709}
   - component: {fileID: 6644412204749725118}
   - component: {fileID: 2442485573011201088}
-  - component: {fileID: 3825857598823777022}
+  - component: {fileID: 8458463561158720227}
   - component: {fileID: 257540244265636308}
   - component: {fileID: 4521234640158807608}
   - component: {fileID: 7318568576125512505}
@@ -69,12 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   politicalPosition: {x: 0, y: 0}
-  targetMaterial: {fileID: 2100000, guid: 05bc9c5d723ae6a4782190cc893b5389, type: 2}
-  authoritarianLeftSprite: {fileID: 21300000, guid: d6be08deafe0db743af4e1b16f4277af, type: 3}
-  authoritarianRightSprite: {fileID: 21300000, guid: 5ec4c2d82368c3b40819a1b9abf6cfa3, type: 3}
-  libertarianLeftSprite: {fileID: 21300000, guid: 07279a9756d4ad54b970b956e5261fb4, type: 3}
-  libertarianRightSprite: {fileID: 21300000, guid: 36e6510ca83161644840dce398386d96, type: 3}
-  neutralSprite: {fileID: 21300000, guid: 580efce99667c8e4cb501b47108103f4, type: 3}
+  cityVariants: []
 --- !u!114 &7817478133265720516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +245,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   stage: {fileID: 0}
---- !u!114 &3825857598823777022
+--- !u!114 &8458463561158720227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,13 +260,14 @@ MonoBehaviour:
   startNews:
     m_PersistentCalls:
       m_Calls: []
+  DemoDayMode: 0
   gameManagerType: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
   videoPlayer: {fileID: 0}
   audioSource: {fileID: 0}
   musicPlayer: {fileID: 0}
   light1: {fileID: 0}
   light3: {fileID: 0}
-  negativeDelay: 2
+  negativeDelay: 4
   lightDelay: 1
   idleVideos:
   - {fileID: 32900000, guid: e83b054358a4b8f48a6e9cc47558a1af, type: 3}
