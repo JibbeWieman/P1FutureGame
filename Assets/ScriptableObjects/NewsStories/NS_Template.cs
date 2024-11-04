@@ -8,14 +8,6 @@ public enum PoliticalAlignment
     LibertarianLeft,
     LibertarianRight
 }
-/* public enum Categories
-{
-    Climate,
-    Drama,
-    Entertainment,
-    Migration,
-} */
-
 
 [CreateAssetMenu(fileName = "NewsStory", menuName = "ScriptableObjects/NewsStory", order = 1)]
 public class NS_Template : ScriptableObject

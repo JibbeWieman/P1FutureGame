@@ -44,6 +44,14 @@ public class FMVPlayer : NewsStoryManager
     [SerializeField]
     private List<VideoClip> idleVideos;
 
+    //Jibbe
+    [Header("Tutorial Videos")]
+    [SerializeField]
+    private List<VideoClip> tutorialVideos;
+
+    private Dictionary<string, VideoClip> tutorialVideoMap = new();
+    //
+
     [Header("Audio")]
     [SerializeField]
     private AudioClip lightsOn;
@@ -66,6 +74,8 @@ public class FMVPlayer : NewsStoryManager
     private Animator animator;
 
     BroadcastStartEvent broadcastStartEvent = Events.BroadcastStartEvent;
+    TutNStoryConfirmedEvent tutNStoryConfirmed = Events.TutNStoryConfirmedEvent;
+    TutStatusEvent tutStatus = Events.TutStatusEvent;
 
     private void Awake()
     {
@@ -81,15 +91,89 @@ public class FMVPlayer : NewsStoryManager
         EventManager.AddListener<NSStatsSentEvent>(OnNewsstoryReceived);
         //link the looppointreached videoplayer event to OnVideoFinished
         videoPlayer.loopPointReached += OnVideoFinished;
+
+        LoadTutorialStatus();
     }
     private void Start()
     {
-        //spawn the initial 2 news stories (remove this when tutorial is in)
-        GetNewsStoryEvent getNews = Events.GetNewsStoryEvent;
-        EventManager.Broadcast(getNews);
-        //Start playing idle videos
-        PlayIdle();
+        if (!tutStatus.TutorialFinished)
+        {
+            // Add tutorial videos to a dictionary (could go without this, but I think it's nice to be able to give it a keyword instead of a number)
+            tutorialVideoMap["Introduction"] = tutorialVideos[0];
+            tutorialVideoMap["Event 1"] = tutorialVideos[1];
+            tutorialVideoMap["Event 2"] = tutorialVideos[2];
+            tutorialVideoMap["Event 3"] = tutorialVideos[3];
+
+            PlayTutorialVideo("Introduction");
+
+            EventManager.AddListener<TutTurnedAroundEvent>(TutTurnedAround);
+            EventManager.AddListener<TutCoffeeDeliveredEvent>(TutCoffeeDelivered);
+            EventManager.AddListener<TutNStoryConfirmedEvent>(TutNStoryConfirmed);
+        }
+        else
+        {
+            //spawn the initial 2 news stories (remove this when tutorial is in)
+            GetNewsStoryEvent getNews = Events.GetNewsStoryEvent;
+            EventManager.Broadcast(getNews);
+            //Start playing idle videos
+            PlayIdle();
+        }
     }
+
+    #region TUTORIAL CODE
+
+    // Call this to save the tutorial status
+    public void SaveTutorialStatus()
+    {
+        PlayerPrefs.SetInt("TutorialFinished", tutNStoryConfirmed.TutorialFinished ? 1 : 0);
+        PlayerPrefs.Save(); // Ensure it's saved immediately
+        Debug.Log("Tutorial status saved: " + tutNStoryConfirmed.TutorialFinished);
+    }
+
+    // Call this to load the tutorial status
+    public void LoadTutorialStatus()
+    {
+        // Retrieve the saved status, defaulting to false (0) if no saved value is found
+        tutNStoryConfirmed.TutorialFinished = PlayerPrefs.GetInt("TutorialFinished", 0) == 1;
+        Debug.Log("Tutorial status loaded: " + tutNStoryConfirmed.TutorialFinished);
+
+        tutStatus.TutorialFinished = tutNStoryConfirmed.TutorialFinished;
+
+        EventManager.Broadcast(tutStatus);
+    }
+
+    private void PlayTutorialVideo(string eventKey)
+    {
+        if (tutorialVideoMap.TryGetValue(eventKey, out VideoClip tutorialVideo))
+        {
+            videoPlayer.clip = tutorialVideo;
+            videoPlayer.Play();
+
+            // Remove the event to prevent replays
+            tutorialVideoMap.Remove(eventKey);
+        }
+        else
+        {
+            Debug.LogWarning($"No tutorial video found for event: {eventKey}");
+        }
+    }
+
+    #region METHODS TO ASSIGN LISTENERS TO
+    private void TutTurnedAround(TutTurnedAroundEvent evt)
+    {
+        PlayTutorialVideo("Event 1");
+    }
+    private void TutCoffeeDelivered(TutCoffeeDeliveredEvent evt)
+    {
+        PlayTutorialVideo("Event 2");
+    }
+    private void TutNStoryConfirmed(TutNStoryConfirmedEvent evt)
+    {
+        PlayTutorialVideo("Event 3");
+    }
+    #endregion
+    #endregion
+
     public void OnNewsstoryReceived(NSStatsSentEvent evt)
     {
         //get the NS_TEMPLATE scriptableobject from the event
@@ -155,6 +239,22 @@ public class FMVPlayer : NewsStoryManager
 
     private void OnVideoFinished(VideoPlayer source)
     {
+        // Last tutorial video
+        TutNStoryConfirmedEvent evt3 = Events.TutNStoryConfirmedEvent;
+        TutCoffeeDeliveredEvent evt2 = Events.TutCoffeeDeliveredEvent;
+
+        if (!evt3.TutorialFinished && evt2.StepCompleted)
+        {
+            EventManager.Broadcast(evt3);
+            evt3.TutorialFinished = true;
+            SaveTutorialStatus();
+
+            animator.SetBool("IsBroadcasting", false);
+            isBroadcasting = false;
+
+            return;
+        }
+
         //when one idle video is finished playing, start playing a new one, make sure you arent in broadcast mode so you dont interrupt the news story
         if (isBroadcasting)
         {

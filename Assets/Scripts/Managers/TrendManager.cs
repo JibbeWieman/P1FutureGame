@@ -97,6 +97,8 @@ public class TrendManager : MonoBehaviour
     /// </summary>
     public void GetRandomTrend(GetNewsStoryEvent getNews)
     {
+        activeTrends.Clear();
+
         Debug.Log("Picking Trend");
         //if (trendTopics.Count <= 0)
         //{

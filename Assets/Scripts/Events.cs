@@ -10,7 +10,10 @@ public static class Events
     public static NSStatsSentEvent NSStatsSentEvent = new();
     public static BroadcastStartEvent BroadcastStartEvent = new();
     public static BroadcastEndEvent BroadcastEndEvent = new();
-    public static MugFilledEvent MugFilledEvent = new();
+    public static TutTurnedAroundEvent TutTurnedAroundEvent = new();
+    public static TutCoffeeDeliveredEvent TutCoffeeDeliveredEvent = new();
+    public static TutNStoryConfirmedEvent TutNStoryConfirmedEvent = new();
+    public static TutStatusEvent TutStatusEvent = new();
     //Sebastian's (Awesome) events
     public static GetNewsStoryEvent GetNewsStoryEvent = new();
 }
@@ -39,11 +42,37 @@ public class BroadcastEndEvent : GameEvent
 }
 
 /// <summary>
-/// Event that fires whenever the player has filled the news presentator's coffee mug. Flag for tutorial.
+/// Event that fires whenever the player has turned towards the window. Flag for tutorial.
 /// </summary>
-public class MugFilledEvent : GameEvent
+public class TutTurnedAroundEvent : GameEvent
 {
+    public bool StepCompleted;
 }
+
+/// <summary>
+/// Event that fires whenever the player has threw the filled mug towards Amelia. Flag for tutorial.
+/// </summary>
+public class TutCoffeeDeliveredEvent : GameEvent
+{
+    public bool StepCompleted;
+}
+
+/// <summary>
+/// Event that fires whenever the player has confirmed their first story. Flag for tutorial.
+/// </summary>
+public class TutNStoryConfirmedEvent : GameEvent
+{
+    public bool TutorialFinished = false;
+}
+
+/// <summary>
+/// Event that fires whenever the player has confirmed their first story. Flag for tutorial.
+/// </summary>
+public class TutStatusEvent : GameEvent
+{
+    public bool TutorialFinished = false;
+}
+
 
 // Sebastian's (awesome) events
 
