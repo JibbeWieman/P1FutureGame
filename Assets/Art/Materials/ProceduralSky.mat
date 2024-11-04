@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: ProceduralSky
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: a5f631d1e3810a044b7630033c9746f4, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6b45111418078ad4fa2f33fede6f2816, type: 2}
   m_ModifiedSerializedProperties: 24
   m_ValidKeywords: []
   m_InvalidKeywords:

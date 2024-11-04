@@ -38,9 +38,6 @@ public class CoffeeMachine : MonoBehaviour
             Destroy(mugInTrigger);
             Instantiate(newPrefab, position, rotation);
 
-            // Broadcast the MugFilledEvent
-           // EventManager.Broadcast(Events.MugFilledEvent);
-
             // Clear the reference
             mugInTrigger = null;
         }
