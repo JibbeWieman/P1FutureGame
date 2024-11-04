@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeightAdjustment : MonoBehaviour
 {
     float direction = 0;
 
-    [SerializeField] 
+    [SerializeField]
     float speed;
 
     [SerializeField]
     private Transform cameraOffset;
 
+    private float minHeight = 0.1f;
+    private float maxHeight = 3.4f;
+
     void Update()
     {
-        if (cameraOffset.position.y > 0.1 && cameraOffset.position.y < 3.5)
+        if (cameraOffset.position.y > minHeight && cameraOffset.position.y < maxHeight)
         {
             cameraOffset.position += new Vector3(0, direction * Time.deltaTime, 0);
         }
@@ -34,6 +35,5 @@ public class HeightAdjustment : MonoBehaviour
             direction = -1 * speed;
         else
             direction = 0;
-    }    
+    }
 }
-//3.5 & 0

@@ -1,48 +1,45 @@
 using UnityEngine;
-using static PoliticalCompass;
 
 public class PoliticalCompass : MonoBehaviour
 {
     #region VARIABLES
-
     // Political position represented as a Vector2
     public Vector2 politicalPosition; // (x: economic scale, y: social scale)
 
-    // Reference to the Material that will change its base map
-    public Material targetMaterial;
+    // Array of prefabs to toggle based on quadrant
+    [SerializeField]
+    private GameObject[] cityVariants; // 0: Neutral, 1: Cyber, 2: Plant, 3: Fire, 4: Smoky
 
-    // Sprites for each quadrant and neutral position
+    // Reference to the Material that will change its base map
+    /*public Material targetMaterial;
+
+     Sprites for each quadrant and neutral position
     public Sprite authoritarianLeftSprite;
     public Sprite authoritarianRightSprite;
     public Sprite libertarianLeftSprite;
     public Sprite libertarianRightSprite;
-    public Sprite neutralSprite;
-
-    #endregion
-
-    #region ENUMERATIONS
+    public Sprite neutralSprite; */
 
     /// <summary>
     /// Defines the political quadrants.
     /// </summary>
     public enum Quadrant
     {
-        AuthoritarianLeft,
-        AuthoritarianRight,
-        LibertarianLeft,
-        LibertarianRight,
+        AuthoritarianLeft,      // Pro Corporate Pro Ecology    Cyber
+        AuthoritarianRight,     // Pro Corporate Anti Ecology   Fire
+        LibertarianLeft,        // Anti Corporate Pro Ecology   Plant
+        LibertarianRight,       // Anti Corporate Anti Ecology  Smoky
         Neutral
     }
-
     #endregion
 
     #region METHODS
-
     private void Start()
     {
         // Initialize the political position to the center of the compass (Neutral)
         politicalPosition = new Vector2(0f, 0f);
-        UpdateMaterialBaseMap(Quadrant.Neutral);
+        UpdateCityscape(Quadrant.Neutral);
+        //UpdateMaterialBaseMap(Quadrant.Neutral);
     }
 
     /// <summary>
@@ -50,8 +47,8 @@ public class PoliticalCompass : MonoBehaviour
     /// </summary>
     private void ClampPoliticalPosition()
     {
-        politicalPosition.x = Mathf.Clamp(politicalPosition.x, -10f, 10f);
-        politicalPosition.y = Mathf.Clamp(politicalPosition.y, -10f, 10f);
+        politicalPosition.x = Mathf.Clamp(politicalPosition.x, -5f, 5f);
+        politicalPosition.y = Mathf.Clamp(politicalPosition.y, -5f, 5f);
     }
 
     /// <summary>
@@ -110,14 +107,48 @@ public class PoliticalCompass : MonoBehaviour
 
         // Update the base map based on the new political position
         Quadrant currentQuadrant = GetCurrentQuadrant();
-        UpdateMaterialBaseMap(currentQuadrant);
+        UpdateCityscape(currentQuadrant);
+        //UpdateMaterialBaseMap(currentQuadrant);
+    }
+
+    /// <summary>
+    /// Activates the prefab associated with the current quadrant and deactivates others.
+    /// </summary>
+    /// <param name="quadrant">The quadrant the political position falls into.</param>
+    private void UpdateCityscape(Quadrant quadrant)
+    {
+        // Deactivate all prefabs initially
+        foreach (var prefab in cityVariants)
+        {
+            prefab.SetActive(false);
+        }
+
+        // Activate the prefab based on the quadrant
+        switch (quadrant)
+        {
+            case Quadrant.Neutral:
+                cityVariants[0].SetActive(true); // Activate Neutral
+                break;
+            case Quadrant.AuthoritarianLeft:
+                cityVariants[1].SetActive(true); // Activate Cyber
+                break;
+            case Quadrant.LibertarianLeft:
+                cityVariants[2].SetActive(true); // Activate Plant
+                break;
+            case Quadrant.AuthoritarianRight:
+                cityVariants[3].SetActive(true); // Activate Fire
+                break;
+            case Quadrant.LibertarianRight:
+                cityVariants[4].SetActive(true); // Activate Smoky
+                break;
+        }
     }
 
     /// <summary>
     /// Updates the material's base map (texture) based on the current quadrant.
     /// </summary>
     /// <param name="quadrant">The quadrant the political position falls into.</param>
-    private void UpdateMaterialBaseMap(Quadrant quadrant)
+    /* private void UpdateMaterialBaseMap(Quadrant quadrant)
     {
         Sprite selectedSprite = null;
 
@@ -146,7 +177,6 @@ public class PoliticalCompass : MonoBehaviour
         {
             targetMaterial.SetTexture("_BaseMap", selectedSprite.texture);
         }
-    }
-
+    } */
     #endregion
 }
