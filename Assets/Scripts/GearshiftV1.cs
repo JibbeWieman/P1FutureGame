@@ -27,7 +27,7 @@ public class GearshiftV1 : MonoBehaviour
         {
             if (other == Collider[i].GetComponent<Collider>())
             {
-                //colNr.Invoke(i);
+                colNr.Invoke(i);
                 ST_StatManager.ChangeAdType(i);
             }
         }
@@ -37,7 +37,7 @@ public class GearshiftV1 : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
 
-        colNr.Invoke(-1);
+        //colNr.Invoke(-1);
 
     }
 }
