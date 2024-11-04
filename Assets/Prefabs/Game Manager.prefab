@@ -69,7 +69,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   politicalPosition: {x: 0, y: 0}
-  cityVariants: []
+  cityVariants:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &7817478133265720516
 MonoBehaviour:
   m_ObjectHideFlags: 0
