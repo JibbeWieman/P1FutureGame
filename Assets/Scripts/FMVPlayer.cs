@@ -8,6 +8,11 @@ using UnityEditor.Rendering;
 
 public class FMVPlayer : NewsStoryManager
 {
+    [Header("DEMO DAY SETTING")]
+    [SerializeField]
+    private bool DemoDayMode; // Always play tutorial ignoring the playerpref
+    [Space(3)]
+
     private TrendManager trendManager;
     [Header("Type")]
     [SerializeField]
@@ -92,11 +97,39 @@ public class FMVPlayer : NewsStoryManager
         //link the looppointreached videoplayer event to OnVideoFinished
         videoPlayer.loopPointReached += OnVideoFinished;
 
-        LoadTutorialStatus();
+        if (!DemoDayMode)
+        {
+            LoadTutorialStatus();
+        }
     }
     private void Start()
     {
-        if (!tutStatus.TutorialFinished)
+        if (!DemoDayMode)
+        {
+            if (!tutStatus.TutorialFinished)
+            {
+                // Add tutorial videos to a dictionary (could go without this, but I think it's nice to be able to give it a keyword instead of a number)
+                tutorialVideoMap["Introduction"] = tutorialVideos[0];
+                tutorialVideoMap["Event 1"] = tutorialVideos[1];
+                tutorialVideoMap["Event 2"] = tutorialVideos[2];
+                tutorialVideoMap["Event 3"] = tutorialVideos[3];
+
+                PlayTutorialVideo("Introduction");
+
+                EventManager.AddListener<TutTurnedAroundEvent>(TutTurnedAround);
+                EventManager.AddListener<TutCoffeeDeliveredEvent>(TutCoffeeDelivered);
+                EventManager.AddListener<TutNStoryConfirmedEvent>(TutNStoryConfirmed);
+            }
+            else
+            {
+                //spawn the initial 2 news stories (remove this when tutorial is in)
+                GetNewsStoryEvent getNews = Events.GetNewsStoryEvent;
+                EventManager.Broadcast(getNews);
+                //Start playing idle videos
+                PlayIdle();
+            }
+        }
+        else
         {
             // Add tutorial videos to a dictionary (could go without this, but I think it's nice to be able to give it a keyword instead of a number)
             tutorialVideoMap["Introduction"] = tutorialVideos[0];
@@ -109,14 +142,6 @@ public class FMVPlayer : NewsStoryManager
             EventManager.AddListener<TutTurnedAroundEvent>(TutTurnedAround);
             EventManager.AddListener<TutCoffeeDeliveredEvent>(TutCoffeeDelivered);
             EventManager.AddListener<TutNStoryConfirmedEvent>(TutNStoryConfirmed);
-        }
-        else
-        {
-            //spawn the initial 2 news stories (remove this when tutorial is in)
-            GetNewsStoryEvent getNews = Events.GetNewsStoryEvent;
-            EventManager.Broadcast(getNews);
-            //Start playing idle videos
-            PlayIdle();
         }
     }
 
