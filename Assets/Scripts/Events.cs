@@ -34,7 +34,6 @@ public class NSStatsSentEvent : GameEvent
 /// </summary>
 public class BroadcastStartEvent : GameEvent
 {
-    public bool IsBroadcasting;
 }
 
 public class BroadcastEndEvent : GameEvent

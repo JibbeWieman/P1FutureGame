@@ -12,6 +12,8 @@ public class LiveChanges : MonoBehaviour
     {
         EventManager.AddListener<BroadcastStartEvent>(OnBroadcastStartEvent);
         EventManager.AddListener<BroadcastEndEvent>(OnBroadcastEndEvent);
+
+        foreach (var obj in liveChanges) obj.SetActive(false);
     }
 
     /// <summary>

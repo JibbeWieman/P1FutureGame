@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
     {
         Debug.Log("OnTriggerEnter detected with: " + collider.gameObject.name);
 
-        if (animator != null && !evt.IsBroadcasting)
+        if (animator != null && !FMVPlayer.isBroadcasting)
         {
             // Trigger the animation to open the door
             animator.SetBool("OpenDoor", true);

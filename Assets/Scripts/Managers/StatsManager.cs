@@ -19,7 +19,7 @@ public class StatsManager : NewsStoryManager
     //[SerializeField, Tooltip("Flag to control ad money generation")]
     //protected bool isBroadcasting = false;
 
-    BroadcastStartEvent flag = Events.BroadcastStartEvent;
+    //BroadcastStartEvent flag = Events.BroadcastStartEvent;
 
     [Tooltip("Flag to control stat updates")]
     protected bool isUpdatingStat = false;
@@ -200,10 +200,12 @@ public class StatsManager : NewsStoryManager
         {
             Debug.Log("Generating ad money loop active.");
 
-            if (flag.IsBroadcasting)
+            if (FMVPlayer.isBroadcasting)
                 Debug.Log("Not making money :(");
 
-            if (!flag.IsBroadcasting)
+            TutNStoryConfirmedEvent evt = Events.TutNStoryConfirmedEvent;
+
+            if (!FMVPlayer.isBroadcasting && evt.TutorialFinished)
             {
                 Debug.Log("Making monayyyyyyyy");
 
@@ -238,7 +240,7 @@ public class StatsManager : NewsStoryManager
 
             if (!isUpdatingStat)
             {
-                int viewerChange = Random.Range(-30, 25);
+                int viewerChange = FMVPlayer.isBroadcasting ? Random.Range(10, 50) : Random.Range(-30, 25);
                 UpdateStat(ref _viewerStat, viewerChange, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
             }
         }

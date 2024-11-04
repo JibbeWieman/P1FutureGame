@@ -72,7 +72,7 @@ public class FMVPlayer : NewsStoryManager
 
     private VideoClip currentIdleVideo;
 
-    private bool isBroadcasting = false;
+    public static bool isBroadcasting = false;
 
     private Animator animator;
 
@@ -246,7 +246,6 @@ public class FMVPlayer : NewsStoryManager
     private void PlayNews(VideoClip video)
     {
         EventManager.Broadcast(broadcastStartEvent);
-        broadcastStartEvent.IsBroadcasting = true;
 
         //set video player's video to video assigned 
         videoPlayer.clip = video;
@@ -291,8 +290,6 @@ public class FMVPlayer : NewsStoryManager
         {
             PlayIdle();
         }
-
-        broadcastStartEvent.IsBroadcasting = false;
 
         BroadcastEndEvent endBroadcast = Events.BroadcastEndEvent;
         EventManager.Broadcast(endBroadcast);
