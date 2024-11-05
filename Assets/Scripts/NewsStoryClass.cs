@@ -22,7 +22,7 @@ public class NewsStoryClass : MonoBehaviour
 
     public bool _used = false;
 
-    private bool _called = false;
+    //private bool _called = false;
 
     [SerializeField]
     private Image _usedX;
@@ -33,7 +33,7 @@ public class NewsStoryClass : MonoBehaviour
     private SceneTypeObject gameManagerType;
 
     [SerializeField]
-    private float trendWait = 5f;
+    //private float trendWait = 5f;
 
     private Component[] newsStoryHandlers;
 

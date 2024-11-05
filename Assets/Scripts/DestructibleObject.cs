@@ -85,6 +85,7 @@ public class DestructibleObject : MonoBehaviour
     #endregion
 }
 
+/*
 #region Custom Inspector for DestructibleObject
 [CustomEditor(typeof(DestructibleObject))]
 public class DestructibleObjectEditor : Editor
@@ -111,4 +112,5 @@ public class DestructibleObjectEditor : Editor
         }
     }
 }
-#endregion
+#endregion 
+*/

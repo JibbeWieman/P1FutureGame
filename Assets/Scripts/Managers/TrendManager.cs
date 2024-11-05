@@ -34,12 +34,12 @@ public class TrendManager : MonoBehaviour
     [SerializeField]
     private SceneTypeObject newsStories;
 
-    private int maxStoryAmount = 6;   // Maximum number of stories to spawn
+    //private int maxStoryAmount = 6;   // Maximum number of stories to spawn
 
     // Private Variables
     private Dictionary<string, List<GameObject>> trendTopics; // Dictionary to hold trend categories and their associated GameObjects
     private List<string> activeTrends = new List<string>(); // List to track currently active trends
-    [SerializeField] private float trendSpawnInterval = 25f; // Time interval for spawning new trends
+    //[SerializeField] private float trendSpawnInterval = 25f; // Time interval for spawning new trends
 
     public UnityEvent<List<GameObject>> onTrendUpdate; // Event triggered when trends are updated
 

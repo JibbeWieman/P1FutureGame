@@ -6135,7 +6135,7 @@ PrefabInstance:
       objectReference: {fileID: 454940186}
     - target: {fileID: 8458463561158720227, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
       propertyPath: DemoDayMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8458463561158720227, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
       propertyPath: audioSource
@@ -7361,7 +7361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
