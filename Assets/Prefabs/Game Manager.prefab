@@ -187,8 +187,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ST_GameManager: {fileID: 11400000, guid: ac84c1ae9d43d21409f9dd394eec8fa5, type: 2}
-  _moneyStat: 1000
-  _viewerStat: 1000
+  _moneyStat: 0
+  _viewerStat: 10000
   _awarenessStat: 0
   maxMoneyStat: 100000
   maxViewerStat: 100000
