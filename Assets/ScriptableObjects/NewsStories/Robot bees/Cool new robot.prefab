@@ -39,13 +39,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d237da522dea2594ba7a51cdd18e685d, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
-      value: Cool new robot bees will finally get rid of those annoying bugs for
-        good
+      value: Cool new robot
       objectReference: {fileID: 0}
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: ab2a778440062904ab1c7dedb2e8b266, type: 2}
+    - target: {fileID: 5725305338623247065, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c66b86c0a89221438e14c86692ac300, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

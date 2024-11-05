@@ -38,12 +38,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: fcced55e6c32f124f935882a9f16f74f, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
-      value: Is the apocalypse nigh AI world takeover continues
+      value: Is the apocalypse
       objectReference: {fileID: 0}
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: c0ecf94322cd369428e5fe035b831817, type: 2}
+    - target: {fileID: 5725305338623247065, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c7ab581cc0d3854a9628b5cc46235a0, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

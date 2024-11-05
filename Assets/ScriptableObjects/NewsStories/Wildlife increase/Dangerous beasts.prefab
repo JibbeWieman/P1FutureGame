@@ -38,12 +38,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
-      value: Dangerous beasts kill our poorest citizens every day.
+      value: Dangerous beasts
       objectReference: {fileID: 0}
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: 0c0f54c3c3753af4f8b0a884f7660da6, type: 2}
+    - target: {fileID: 5725305338623247065, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 071d518d7fce834498927ffa8fa9660b, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

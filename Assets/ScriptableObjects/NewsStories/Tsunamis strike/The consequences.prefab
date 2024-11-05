@@ -34,12 +34,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 928100a4d33d5da4282561a31778eb83, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
-      value: The consequences of ignoring climate change strike the city
+      value: The consequences
       objectReference: {fileID: 0}
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: aabc7a2cf7cc4fa479563efa04cb88b3, type: 2}
+    - target: {fileID: 5725305338623247065, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 928100a4d33d5da4282561a31778eb83, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

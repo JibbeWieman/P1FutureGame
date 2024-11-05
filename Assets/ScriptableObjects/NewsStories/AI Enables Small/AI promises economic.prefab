@@ -38,12 +38,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 22113f1f824def0419504861f2539a98, type: 2}
     - target: {fileID: 4271452722094587741, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_Name
-      value: AI promises economic benefits for even the most disadvantaged
+      value: AI promises economic
       objectReference: {fileID: 0}
     - target: {fileID: 4294505392523972753, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: type
       value: 
       objectReference: {fileID: 11400000, guid: dec9358b12ef3714d90220bce60321e9, type: 2}
+    - target: {fileID: 5725305338623247065, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d3e9ed022354354b88a5d3fe9e141b1, type: 2}
     - target: {fileID: 8894191465457295462, guid: bd2d4882fdc959847a9f408d8affe438, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.068
