@@ -10313,7 +10313,7 @@ MonoBehaviour:
   image:
   - {fileID: 2800000, guid: 57dd81a3ec94899449f659fd3b1318c0, type: 3}
   - {fileID: 2800000, guid: 4d6917cc77c0f6544a689bbdc760874c, type: 3}
-  - {fileID: 2800000, guid: cf408aae6bf0cf448a3453789c153605, type: 3}
+  - {fileID: 2800000, guid: 62c95bf9e581c844284c6449a2790cad, type: 3}
 --- !u!114 &1436501515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10334,7 +10334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: cf408aae6bf0cf448a3453789c153605, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4d6917cc77c0f6544a689bbdc760874c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
