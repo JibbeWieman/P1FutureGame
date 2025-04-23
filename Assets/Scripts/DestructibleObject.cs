@@ -42,7 +42,9 @@ public class DestructibleObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!hasCollided && rb.velocity.magnitude >= requiredBreakMagnitude)
+        bool _used = GetComponentInChildren<NewsStoryClass>()._used;
+
+        if (!hasCollided && rb.velocity.magnitude >= requiredBreakMagnitude && _used)
         {
             hasCollided = true;
             DestroyObject();
@@ -85,7 +87,7 @@ public class DestructibleObject : MonoBehaviour
     #endregion
 }
 
-/*
+#if UNITY_EDITOR
 #region Custom Inspector for DestructibleObject
 [CustomEditor(typeof(DestructibleObject))]
 public class DestructibleObjectEditor : Editor
@@ -112,5 +114,5 @@ public class DestructibleObjectEditor : Editor
         }
     }
 }
-#endregion 
-*/
+#endregion
+#endif

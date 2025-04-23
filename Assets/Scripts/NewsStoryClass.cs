@@ -1,9 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using Unity.VisualScripting;
-using System;
 
 public class NewsStoryClass : MonoBehaviour
 {

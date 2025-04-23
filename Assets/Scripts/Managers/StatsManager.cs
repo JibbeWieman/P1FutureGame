@@ -69,7 +69,15 @@ public class StatsManager : NewsStoryManager
     private List<AdTypeStats> adTypes;
 
     private AdTypeStats currentAdType;
+
+    [SerializeField, Range(3f, 10f)]
+    private float minAdTime, maxAdTime;
+    [SerializeField]
+    private float adCooldown = 3f;
     
+    private bool isAdPlaying = false;
+    private bool isAdCoroutineRunning = false;
+
     //[SerializeField, Tooltip("Money earned per viewer per second")]
     //private float adMoneyRate = 0.1f;
 
@@ -198,7 +206,7 @@ public class StatsManager : NewsStoryManager
     {
         while (true)
         {
-            Debug.Log("Generating ad money loop active.");
+            //Debug.Log("Generating ad money loop active.");
 
             if (FMVPlayer.isBroadcasting)
                 Debug.Log("Not making money :(");
@@ -207,23 +215,50 @@ public class StatsManager : NewsStoryManager
 
             if (!FMVPlayer.isBroadcasting && evt.TutorialFinished)
             {
-                Debug.Log("Making monayyyyyyyy");
+                if (!isAdPlaying && !isAdCoroutineRunning)
+                {
+                    StartCoroutine(PlayAdTimer());
+                }
 
-                int moneyEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adMoneyRate);
-                int awarenessEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adAwarenessRate);
-                int viewersEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adViewerRate);
+                if (isAdPlaying)
+                {
+                    //Debug.Log("Making monayyyyyyyy");
 
-                UpdateStat(ref _moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
-                UpdateStat(ref _viewerStat, viewersEarned, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
-                UpdateStat(ref _awarenessStat, awarenessEarned, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
-                
-                //_moneyStat = Mathf.Clamp(_moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
-                //_viewerStat = Mathf.Clamp(_viewerStat + viewersEarned, minViewerStat, maxViewerStat);
-                //_awarenessStat = Mathf.Clamp(_awarenessStat + awarenessEarned, minAwarenessStat, maxAwarenessStat);
+                    int moneyEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adMoneyRate);
+                    int awarenessEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adAwarenessRate);
+                    int viewersEarned = Mathf.RoundToInt(_viewerStat * currentAdType.adViewerRate);
+
+                    UpdateStat(ref _moneyStat, moneyEarned, minMoneyStat, maxMoneyStat, uiManager.moneyStat, "Money");
+                    UpdateStat(ref _viewerStat, viewersEarned, minViewerStat, maxViewerStat, uiManager.viewerStat, "Viewers");
+                    UpdateStat(ref _awarenessStat, awarenessEarned, minAwarenessStat, maxAwarenessStat, uiManager.awarenessStat, "Awareness");
+
+                    //_moneyStat = Mathf.Clamp(_moneyStat + moneyEarned, minMoneyStat, maxMoneyStat);
+                    //_viewerStat = Mathf.Clamp(_viewerStat + viewersEarned, minViewerStat, maxViewerStat);
+                    //_awarenessStat = Mathf.Clamp(_awarenessStat + awarenessEarned, minAwarenessStat, maxAwarenessStat);
+                }
             }
 
             yield return new WaitForSeconds(.5f);
         }
+    }
+    private IEnumerator PlayAdTimer()
+    {
+        isAdCoroutineRunning = true;
+
+        float adTime = Random.Range(minAdTime, maxAdTime);
+
+        isAdPlaying = true;
+        Debug.Log($"Ad started. Duration: {adTime}s");
+        yield return new WaitForSeconds(adTime);
+
+        isAdPlaying = false;
+        Debug.Log("Ad finished.");
+
+        Debug.Log($"Starting cooldown: {adCooldown}s");
+        yield return new WaitForSeconds(adCooldown);
+
+        Debug.Log("Cooldown finished.");
+        isAdCoroutineRunning = false;
     }
     #endregion
 
