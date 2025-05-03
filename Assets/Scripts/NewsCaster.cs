@@ -7,6 +7,6 @@ public class NewsCaster : MonoBehaviour
     private void Update()
     {
         this.transform.LookAt(targetObject);
-        this.transform.rotation = Quaternion.Euler(0, this.transform.eulerAngles.y + 180f, 0);
+        this.transform.rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -34,12 +33,9 @@ public class TrendManager : MonoBehaviour
     [SerializeField]
     private SceneTypeObject newsStories;
 
-    //private int maxStoryAmount = 6;   // Maximum number of stories to spawn
-
     // Private Variables
     private Dictionary<string, List<GameObject>> trendTopics; // Dictionary to hold trend categories and their associated GameObjects
     private List<string> activeTrends = new List<string>(); // List to track currently active trends
-    //[SerializeField] private float trendSpawnInterval = 25f; // Time interval for spawning new trends
 
     public UnityEvent<List<GameObject>> onTrendUpdate; // Event triggered when trends are updated
 
@@ -78,21 +74,6 @@ public class TrendManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Initializes the TrendManager and starts the auto-trend update process.
-    /// </summary>
-    public void Start()
-    {
-
-        // Initialize the timer with the trendSpawnInterval and set autoReset to true
-        //trendUpdateTimer = new Timer(trendSpawnInterval, true);
-
-        // Immediately fetch the first random trend
-        // had to temporarily move this to FMV player until the tutorial is in 
-
-    }
-
-
-    /// <summary>
     /// Selects a random trend from the available topics and activates it.
     /// </summary>
     public void GetRandomTrend(GetNewsStoryEvent getNews)
@@ -100,11 +81,11 @@ public class TrendManager : MonoBehaviour
         activeTrends.Clear();
 
         Debug.Log("Picking Trend");
-        //if (trendTopics.Count <= 0)
-        //{
-        //    Debug.LogWarning("No trending topics available.");
-        //    return;
-        //}
+        if (trendTopics.Count <= 0)
+        {
+            Debug.LogWarning("No trending topics available.");
+            return;
+        }
 
         // Randomly pick a trend
         string randomCategoryKey = GetRandomKeyFromDictionary(trendTopics);
@@ -114,30 +95,12 @@ public class TrendManager : MonoBehaviour
 
         UpdateTrendMonitorText();
 
-        //// Randomize the trend duration
-        //float trendDuration = Random.Range(20f, 30f);
-        //StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
-
         // Trigger the event
         onTrendUpdate?.Invoke(trendTopics[randomCategoryKey]);
 
         // Remove the selected topic from the list to prevent double stories
         trendTopics.Remove(randomCategoryKey);
     }
-
-    /// <summary>
-    /// Coroutine that manages the duration of the trending topic.
-    /// </summary>
-    //private IEnumerator TrendTimer(string trendingTopic, float duration)
-    //{
-    //    // Wait for x seconds before removing the trend
-    //    yield return new WaitForSeconds(duration);
-
-    //    if (activeTrends.Remove(trendingTopic)) // Remove the trend if it exists
-    //    {
-    //        UpdateTrendMonitorText(); // Update the text after removal
-    //    }
-    //}
 
     /// <summary>
     /// Updates the trend monitor UI text to reflect active trends.
@@ -158,3 +121,43 @@ public class TrendManager : MonoBehaviour
 
     #endregion
 }
+
+/* OLD CODE
+    //[SerializeField] private float trendSpawnInterval = 25f; // Time interval for spawning new trends
+    //private int maxStoryAmount = 6;   // Maximum number of stories to spawn
+
+/// <summary>
+/// Initializes the TrendManager and starts the auto-trend update process.
+/// </summary>
+public void Start()
+{
+
+    // Initialize the timer with the trendSpawnInterval and set autoReset to true
+    //trendUpdateTimer = new Timer(trendSpawnInterval, true);
+
+    // Immediately fetch the first random trend
+    // had to temporarily move this to FMV player until the tutorial is in 
+
+}
+
+void GetRandomTrend
+{
+        //// Randomize the trend duration
+        //float trendDuration = Random.Range(20f, 30f);
+        //StartCoroutine(TrendTimer(randomCategoryKey, trendDuration)); // Start the timer for this trend
+}
+
+/// <summary>
+    /// Coroutine that manages the duration of the trending topic.
+    /// </summary>
+    //private IEnumerator TrendTimer(string trendingTopic, float duration)
+    //{
+    //    // Wait for x seconds before removing the trend
+    //    yield return new WaitForSeconds(duration);
+
+    //    if (activeTrends.Remove(trendingTopic)) // Remove the trend if it exists
+    //    {
+    //        UpdateTrendMonitorText(); // Update the text after removal
+    //    }
+    //}
+*/
