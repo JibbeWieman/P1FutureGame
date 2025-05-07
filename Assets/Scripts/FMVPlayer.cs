@@ -82,6 +82,10 @@ public class FMVPlayer : NewsStoryManager
 
     private void Awake()
     {
+        
+    }
+    private void Start()
+    {
         //get component references
         videoPlayer = GetComponent<VideoPlayer>();
         animator = GetComponent<Animator>();
@@ -98,12 +102,7 @@ public class FMVPlayer : NewsStoryManager
         if (!DemoDayMode)
         {
             LoadTutorialStatus();
-        }
-    }
-    private void Start()
-    {
-        if (!DemoDayMode)
-        {
+
             if (!tutStatus.TutorialFinished)
             {
                 // Add tutorial videos to a dictionary (could go without this, but I think it's nice to be able to give it a keyword instead of a number)

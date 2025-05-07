@@ -46,8 +46,9 @@ public class TrendManager : MonoBehaviour
 
     #region METHODS
 
-    private void Awake()
+    private void Start()
     {
+        EventManager.AddListener<GetNewsStoryEvent>(GetRandomTrend);
 
         trendTopics = new Dictionary<string, List<GameObject>>
         {
@@ -70,7 +71,6 @@ public class TrendManager : MonoBehaviour
             { "Tsunamis strike the bottom layer of the city", T17 },
             { "Wildlife increase in lower layers", T18 },
         };
-        EventManager.AddListener<GetNewsStoryEvent>(GetRandomTrend);
     }
 
     /// <summary>
@@ -117,6 +117,11 @@ public class TrendManager : MonoBehaviour
     {
         List<string> keys = new List<string>(dictionary.Keys);
         return keys[Random.Range(0, keys.Count)];
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener<GetNewsStoryEvent>(GetRandomTrend);
     }
 
     #endregion

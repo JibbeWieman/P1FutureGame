@@ -104,6 +104,7 @@ public class NewsSpawner : MonoBehaviour
 
     private void Update()
     {
+        //Instantiate(newsStory, transform, false); YT Bit
         UpdateMoneyPrefabs();
 
         // Ensure that there always is a mug to prevent the player getting stuck in the tutorial
