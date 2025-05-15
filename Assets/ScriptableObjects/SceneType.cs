@@ -11,10 +11,19 @@ public class SceneType : MonoBehaviour
         return type;
     }
 
-    private void Awake()
+    private void Start()
     {
-        type.Add(gameObject);
+        if (type == null)
+        {
+            Debug.LogError($"{name} has no SceneTypeObject assigned!");
+        }
+        else
+        {
+            Debug.Log($"SceneTypeObject assigned: {type.name}");
+            type.Add(gameObject);
+        }
     }
+
 
     private void OnDestroy()
     {

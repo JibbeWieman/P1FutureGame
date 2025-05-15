@@ -40,6 +40,7 @@ public class NewsStoryClass : MonoBehaviour
 
     private void Start()
     {
+        _used = false;
         #region CODE THAT MAKES IT SO YOU DON'T HAVE TO SLOT IN SCENETYPE
         // Get all SceneType components in the parent or itself
         SceneType[] sceneTypes = GetComponentsInParent<SceneType>();

@@ -80,10 +80,6 @@ public class FMVPlayer : NewsStoryManager
     TutNStoryConfirmedEvent tutNStoryConfirmed = Events.TutNStoryConfirmedEvent;
     TutStatusEvent tutStatus = Events.TutStatusEvent;
 
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         //get component references
