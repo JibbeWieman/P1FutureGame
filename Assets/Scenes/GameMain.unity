@@ -6530,7 +6530,7 @@ PrefabInstance:
       objectReference: {fileID: 454940186}
     - target: {fileID: 8458463561158720227, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
       propertyPath: DemoDayMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458463561158720227, guid: 0944774a1956579459d6e0cb71144f41, type: 3}
       propertyPath: audioSource
@@ -20137,8 +20137,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2908829518456547850}
     - target: {fileID: 1805220513275567092, guid: 241e60d91fbe6bb49b66d662eff7587d, type: 3}
+      propertyPath: moneyPrefab
+      value: 
+      objectReference: {fileID: 4530162299647646024, guid: 499b07dfef873c04ba5e75b6fa18688f, type: 3}
+    - target: {fileID: 1805220513275567092, guid: 241e60d91fbe6bb49b66d662eff7587d, type: 3}
       propertyPath: moneyStackWorth
-      value: 1000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1805220513275567092, guid: 241e60d91fbe6bb49b66d662eff7587d, type: 3}
       propertyPath: moneyAwardPrefab
